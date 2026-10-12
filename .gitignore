@@ -1,0 +1,31 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# build output
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+
+# local data (embedded Postgres + uploaded media)
+.data/
+
+# environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# logs
+npm-debug.log*
+yarn-error.log*
+*.log

@@ -1,0 +1,444 @@
+Abbottabad University of Science and Technology
+Abdul Wali Khan University Mardan
+Air University - Islamabad Campus
+Air University - Multan Campus
+Air University - Kamra Campus
+Air University - Kharian Campus
+Air University - Lahore Campus
+Air University - Karachi Campus
+Al-Kawthar University - Karachi Campus
+Al-Kawthar University - Rashidabad Campus
+Al-Hamd Islamic University - Quetta Campus
+Al-Hamd Islamic University - Islamabad Campus
+Allama Iqbal Open University - Islamabad
+Aga Khan University - Karachi Campus
+Abasyn University - Peshawar Campus
+Abasyn University - Islamabad Campus
+Bahria University - Islamabad Campus
+Bahria University - Karachi Campus
+Bahria University - Lahore Campus
+Bahauddin Zakariya University - Multan Campus
+Bahauddin Zakariya University - Vehari Campus
+Bahauddin Zakariya University - Lodhran Campus
+Balochistan University of Engineering and Technology - Khuzdar Campus
+Balochistan University of Engineering and Technology - Uthal Campus
+Balochistan University of Information Technology, Engineering and Management Sciences - Quetta Campus
+Balochistan University of Information Technology, Engineering and Management Sciences - Zhob Campus
+Benazir Bhutto Shaheed University - Lyari Campus
+Benazir Bhutto Shaheed University of Technology and Skill Development - Khairpur Mirs Campus
+CECOS University of Information Technology and Emerging Sciences - Peshawar Campus
+COMSATS University Islamabad - Islamabad Campus
+COMSATS University Islamabad - Abbottabad Campus
+COMSATS University Islamabad - Attock Campus
+COMSATS University Islamabad - Lahore Campus
+COMSATS University Islamabad - Wah Campus
+COMSATS University Islamabad - Vehari Campus
+COMSATS University Islamabad - Sahiwal Campus
+Capital University of Science and Technology - Islamabad Campus
+City University of Science and Information Technology - Peshawar Campus
+DHA Suffa University - Karachi Campus
+DHA Suffa University - DHA City Campus
+Dawood University of Engineering and Technology - Karachi Campus
+Dow University of Health Sciences - Karachi Campus
+Dow University of Health Sciences - Ojha Campus
+Fatima Jinnah Women University - Rawalpindi Campus
+Federal Urdu University of Arts, Sciences and Technology - Islamabad Campus
+Federal Urdu University of Arts, Sciences and Technology - Karachi Campus
+Forman Christian College - Lahore Campus
+Foundation University - Islamabad Campus
+Foundation University - Rawalpindi Campus
+FAST National University of Computer and Emerging Sciences - Islamabad Campus
+FAST National University of Computer and Emerging Sciences - Lahore Campus
+FAST National University of Computer and Emerging Sciences - Karachi Campus
+FAST National University of Computer and Emerging Sciences - Peshawar Campus
+FAST National University of Computer and Emerging Sciences - Chiniot Campus
+FAST National University of Computer and Emerging Sciences - Multan Campus
+GIFT University - Gujranwala Campus
+Gomal University - Dera Ismail Khan Campus
+Gomal University - Tank Campus
+Government College University Lahore - Lahore Campus
+Government College University Faisalabad - Faisalabad Campus
+Government College University Faisalabad - Chiniot Campus
+Government College University Faisalabad - Layyah Campus
+Government College University Faisalabad - Sahiwal Campus
+Government College University Faisalabad - Hafizabad Campus
+Greenwich University - Karachi Campus
+Habib University - Karachi Campus
+Hajvery University - Lahore Campus
+Hamdard University - Karachi Campus
+Hamdard University - Islamabad Campus
+Hazara University - Mansehra Campus
+Hazara University - Battagram Campus
+Health Services Academy - Islamabad Campus
+Indus University - Karachi Campus
+Indus University - North Campus
+Institute of Business Administration - Karachi Campus
+Institute of Business Management - Karachi Campus
+Institute of Space Technology - Islamabad Campus
+Institute of Space Technology - Kahuta Campus
+Institute of Space Technology - Karachi Campus
+International Islamic University - Islamabad Campus
+Iqra University - Karachi Campus
+Iqra University - Islamabad Campus
+Iqra University - Hyderabad Campus
+Iqra University - North Campus Karachi
+Iqra University - Gulshan Campus Karachi
+Iqra University - Chak Shahzad Campus Islamabad
+Iqra National University - Peshawar Campus
+Iqra National University - Swat Campus
+Isra University - Hyderabad Campus
+Isra University - Islamabad Campus
+Isra University - Karachi Campus
+Islamia College University - Peshawar Campus
+Islamia University of Bahawalpur - Bahawalpur Campus
+Islamia University of Bahawalpur - Rahim Yar Khan Campus
+Islamia University of Bahawalpur - Bahawalnagar Campus
+Islamabad Model College for Girls - Not a university
+Islamabad University of Health Sciences and Emerging Technologies - Islamabad Campus
+Islamabad University of Health Sciences and Emerging Technologies - Sialkot Campus
+Karakoram International University - Gilgit Campus
+Karakoram International University - Hunza Campus
+Karakoram International University - Diamer Campus
+Karakoram International University - Ghizer Campus
+Karachi Institute of Economics and Technology - Karachi Campus
+Karachi Institute of Economics and Technology - Ahsanabad Campus
+Kohat University of Science and Technology - Kohat Campus
+Kohat University of Science and Technology - Hangu Campus
+Kinnaird College for Women - Lahore Campus
+King Edward Medical University - Lahore Campus
+Khwaja Fareed University of Engineering and Information Technology - Rahim Yar Khan Campus
+Lahore College for Women University - Lahore Campus
+Lahore College for Women University - Jhang Campus
+Lahore Garrison University - Lahore Campus
+Lahore Leads University - Lahore Campus
+Lahore Leads University - Islamabad Campus
+Lahore University of Management Sciences - Lahore Campus
+Lasbela University of Agriculture, Water and Marine Sciences - Uthal Campus
+Lasbela University of Agriculture, Water and Marine Sciences - Wadh Campus
+Lasbela University of Agriculture, Water and Marine Sciences - Dera Murad Jamali Campus
+Mehran University of Engineering and Technology - Jamshoro Campus
+Mehran University of Engineering and Technology - Khairpur Campus
+Minhaj University - Lahore Campus
+Mirpur University of Science and Technology - Mirpur Campus
+Mohi-ud-Din Islamic University - Nerian Sharif Campus
+Mohi-ud-Din Islamic University - Mirpur Campus
+Multan University of Science and Technology - Multan Campus
+National College of Arts - Lahore Campus
+National College of Arts - Rawalpindi Campus
+National Defence University - Islamabad Campus
+National Textile University - Faisalabad Campus
+National Textile University - Karachi Campus
+National University of Computer and Emerging Sciences - Islamabad Campus
+National University of Computer and Emerging Sciences - Lahore Campus
+National University of Computer and Emerging Sciences - Karachi Campus
+National University of Computer and Emerging Sciences - Peshawar Campus
+National University of Computer and Emerging Sciences - Chiniot Campus
+National University of Computer and Emerging Sciences - Multan Campus
+National University of Modern Languages - Islamabad Campus
+National University of Modern Languages - Lahore Campus
+National University of Modern Languages - Faisalabad Campus
+National University of Modern Languages - Peshawar Campus
+National University of Modern Languages - Multan Campus
+National University of Modern Languages - Karachi Campus
+National University of Modern Languages - Hyderabad Campus
+National University of Modern Languages - Quetta Campus
+National University of Modern Languages - Rawalpindi Campus
+National University of Modern Languages - Mirpur Campus
+National University of Sciences and Technology - Islamabad Campus
+National University of Sciences and Technology - Quetta Campus
+NED University of Engineering and Technology - Karachi Campus
+NED University of Engineering and Technology - Mithi Campus
+Pakistan Institute of Development Economics - Islamabad Campus
+Pakistan Institute of Engineering and Applied Sciences - Nilore Campus
+Pakistan Institute of Fashion and Design - Lahore Campus
+Pakistan Institute of Medical Sciences - Islamabad
+Pir Mehr Ali Shah Arid Agriculture University - Rawalpindi Campus
+Pir Mehr Ali Shah Arid Agriculture University - Attock Campus
+Preston University - Kohat Campus
+Preston University - Islamabad Campus
+Preston University - Peshawar Campus
+Preston University - Lahore Campus
+Punjab Tianjin University of Technology - Lahore Campus
+Qarshi University - Lahore Campus
+Qurtuba University of Science and Information Technology - Dera Ismail Khan Campus
+Qurtuba University of Science and Information Technology - Peshawar Campus
+Quaid-i-Azam University - Islamabad Campus
+Quaid-i-Azam University - Islamabad School of Management Sciences
+Quaid-i-Awam University of Engineering, Science and Technology - Nawabshah Campus
+Quaid-i-Awam University of Engineering, Science and Technology - Larkana Campus
+Riphah International University - Islamabad Campus
+Riphah International University - Lahore Campus
+Riphah International University - Faisalabad Campus
+Riphah International University - Sahiwal Campus
+Riphah International University - Peshawar Campus
+Riphah International University - Gujranwala Campus
+Riphah International University - Gulberg Greens Campus
+Riphah International University - Malakand Campus
+Rawalpindi Women University - Rawalpindi Campus
+Sardar Bahadur Khan Women University - Quetta Campus
+Sardar Bahadur Khan Women University - Pishin Campus
+Sardar Bahadur Khan Women University - Noshki Campus
+Sardar Bahadur Khan Women University - Khuzdar Campus
+Sarhad University of Science and Information Technology - Peshawar Campus
+Sarhad University of Science and Information Technology - Islamabad Campus
+Shaheed Benazir Bhutto University - Shaheed Benazirabad Campus
+Shaheed Benazir Bhutto University - Naushahro Feroze Campus
+Shaheed Benazir Bhutto University Sheringal - Sheringal Campus
+Shaheed Benazir Bhutto University Sheringal - Wari Campus
+Shaheed Benazir Bhutto Women University - Peshawar Campus
+Shaheed Benazir Bhutto University of Veterinary and Animal Sciences - Sakrand Campus
+Shaheed Zulfiqar Ali Bhutto Institute of Science and Technology - Karachi Campus
+Shaheed Zulfiqar Ali Bhutto Institute of Science and Technology - Islamabad Campus
+Shaheed Zulfiqar Ali Bhutto Institute of Science and Technology - Hyderabad Campus
+Shaheed Zulfiqar Ali Bhutto Institute of Science and Technology - Larkana Campus
+Shaheed Zulfiqar Ali Bhutto Institute of Science and Technology - Gharo Campus
+Shah Abdul Latif University - Khairpur Campus
+Shah Abdul Latif University - Ghotki Campus
+Shah Abdul Latif University - Shahdadkot Campus
+Shaikh Ayaz University - Shikarpur Campus
+Shifa Tameer-e-Millat University - Islamabad Campus
+Sindh Agriculture University - Tandojam Campus
+Sindh Agriculture University - Umerkot Campus
+Sindh Madressatul Islam University - Karachi Campus
+Sukkur IBA University - Sukkur Campus
+Sukkur IBA University - Khairpur Campus
+Sukkur IBA University - Kandhkot Campus
+Superior University - Lahore Campus
+Superior University - Okara Campus
+Superior University - Sargodha Campus
+Superior University - Rahim Yar Khan Campus
+Superior University - Faisalabad Campus
+Superior University - Layyah Campus
+The University of Faisalabad - Faisalabad Campus
+University of Agriculture Faisalabad - Faisalabad Campus
+University of Agriculture Faisalabad - Toba Tek Singh Campus
+University of Agriculture Faisalabad - Depalpur Campus
+University of Agriculture Faisalabad - Burewala Campus
+University of Balochistan - Quetta Campus
+University of Balochistan - Mastung Campus
+University of Balochistan - Kharan Campus
+University of Central Punjab - Lahore Campus
+University of Chakwal - Chakwal Campus
+University of Chenab - Gujrat Campus
+University of Chitral - Chitral Campus
+University of Education - Lahore Campus
+University of Education - Attock Campus
+University of Education - Faisalabad Campus
+University of Education - Dera Ghazi Khan Campus
+University of Education - Joharabad Campus
+University of Education - Multan Campus
+University of Education - Vehari Campus
+University of Engineering and Technology Lahore - Lahore Campus
+University of Engineering and Technology Lahore - Kala Shah Kaku Campus
+University of Engineering and Technology Lahore - Faisalabad Campus
+University of Engineering and Technology Lahore - Rachna College Gujranwala
+University of Engineering and Technology Lahore - Narowal Campus
+University of Engineering and Technology Taxila - Taxila Campus
+University of Engineering and Technology Peshawar - Peshawar Campus
+University of Engineering and Technology Peshawar - Abbottabad Campus
+University of Engineering and Technology Peshawar - Bannu Campus
+University of Engineering and Technology Peshawar - Jalozai Campus
+University of Engineering and Technology Peshawar - Kohat Campus
+University of Engineering and Technology Mardan - Mardan Campus
+University of Gujrat - Gujrat Campus
+University of Gujrat - Mandi Bahauddin Campus
+University of Haripur - Haripur Campus
+University of Health Sciences - Lahore Campus
+University of Home Economics - Lahore Campus
+University of Jhang - Jhang Campus
+University of Karachi - Karachi Campus
+University of Lahore - Lahore Campus
+University of Lahore - Sargodha Campus
+University of Layyah - Layyah Campus
+University of Malakand - Malakand Campus
+University of Malakand - Batkhela Campus
+University of Management and Technology - Lahore Campus
+University of Management and Technology - Sialkot Campus
+University of Mianwali - Mianwali Campus
+University of Narowal - Narowal Campus
+University of Okara - Okara Campus
+University of Peshawar - Peshawar Campus
+University of Poonch - Rawalakot Campus
+University of Poonch - Kahuta Haveli Campus
+University of Sargodha - Sargodha Campus
+University of Sargodha - Bhakkar Campus
+University of Sargodha - Mianwali Campus
+University of Sialkot - Sialkot Campus
+University of Sindh - Jamshoro Campus
+University of Sindh - Mirpur Khas Campus
+University of Sindh - Badin Campus
+University of Sindh - Dadu Campus
+University of Sufism and Modern Sciences - Bhitshah Campus
+University of Swabi - Swabi Campus
+University of Swat - Swat Campus
+University of Shangla - Shangla Campus
+University of Technology - Nowshera Campus
+University of Turbat - Turbat Campus
+University of Turbat - Gwadar Campus
+University of Turbat - Panjgur Campus
+University of Veterinary and Animal Sciences - Lahore Campus
+University of Veterinary and Animal Sciences - Pattoki Campus
+University of Veterinary and Animal Sciences - Jhang Campus
+University of Veterinary and Animal Sciences - Narowal Campus
+University of Wah - Wah Campus
+University of Women Mardan - Mardan Campus
+Virtual University of Pakistan - Lahore Campus
+Virtual University of Pakistan - Islamabad Campus
+Virtual University of Pakistan - Rawalpindi Campus
+Virtual University of Pakistan - Dera Ghazi Khan Campus
+Virtual University of Pakistan - Faisalabad Campus
+Virtual University of Pakistan - Gujranwala Campus
+Virtual University of Pakistan - Multan Campus
+Virtual University of Pakistan - Sahiwal Campus
+Virtual University of Pakistan - Badin Campus
+Virtual University of Pakistan - Ghotki Campus
+Virtual University of Pakistan - Karachi Campus
+Virtual University of Pakistan - Pishin Campus
+Virtual University of Pakistan - Peshawar Campus
+Virtual University of Pakistan - Muzaffargarh Campus
+Virtual University of Pakistan - Hyderabad Campus
+Virtual University of Pakistan - Jhelum Campus
+Ziauddin University - Karachi Campus
+Ziauddin University - Sukkur Campus
+University of Loralai
+University of Gwadar
+University of Makran
+University of Zhob
+University of Dera Ghazi Khan
+Baba Guru Nanak University
+Cholistan University of Veterinary and Animal Sciences
+Ghazi University
+Emerson University Multan
+Government College Women University Faisalabad
+Government College Women University Sialkot
+Government Sadiq College Women University
+Fatima Jinnah Medical University
+Rawalpindi Medical University
+University of Baltistan
+Women University Swabi
+FATA University
+University of Buner
+University of Lakki Marwat
+Government College University Hyderabad
+University of Mirpurkhas
+University of Larkano
+Pakistan Marine Academy
+Ghulam Ishaq Khan Institute of Engineering Sciences and Technology
+Ibadat International University
+Gandhara University
+Ilma University
+National College of Business Administration & Economics
+Nazeer Hussain University
+Lahore School of Economics
+Institute of Cost and Management Accountants of Pakistan
+Institute of Business and Technology
+Preston Institute of Management Sciences and Technology
+HITEC University
+Sir Syed CASE Institute of Technology
+National University of Medical Sciences
+Shaheed Mohtarma Benazir Bhutto Medical University
+Bolan University of Medical and Health Sciences
+Jinnah Sindh Medical University
+Liaquat University of Medical and Health Sciences
+People's University of Medical and Health Sciences for Women
+Sindh Institute of Medical Sciences
+National University of Pakistan
+National University of Technology
+University of Azad Jammu and Kashmir
+University of Kotli Azad Jammu and Kashmir
+Women University of Azad Jammu and Kashmir
+University of Sahiwal
+University of Gujrat
+University of Jhang
+University of Narowal
+University of Mianwali
+University of Chakwal
+University of Sargodha
+University of Faisalabad
+University of Wah
+University of Rawalpindi
+University of Taxila
+University of Hafizabad
+University of Kamalia
+University of Murree
+University of Rajanpur
+University of Taunsa
+University of Bhakkar
+University of Pakpattan
+University of Khanewal
+University of Kasur
+University of Sheikhupura
+University of Jhelum
+University of Kharian
+University of Bahawalnagar
+University of Rahim Yar Khan
+University of Muzaffargarh
+University of Vehari
+University of Lodhran
+University of Attock
+University of Okara
+University of Technology, Mardan
+Pak-Austria Fachhochschule Institute of Applied Sciences and Technology
+Shah Abdul Latif University, Bhitshah
+Begum Nusrat Bhutto Women University, Sukkur
+Government College University, Sialkot
+Government College Women University, Bahawalpur
+Fatima Jinnah Medical University, Lahore
+Nishtar Medical University, Multan
+Faisalabad Medical University, Faisalabad
+Rawal Institute of Health Sciences, Islamabad
+Yusra Institute of Pharmaceutical Sciences, Islamabad
+Margalla Institute of Health Sciences, Rawalpindi
+Islamabad Medical and Dental College, Islamabad
+Shalamar Medical and Dental College, Lahore
+Akhtar Saeed Medical and Dental College, Lahore
+Azra Naheed Medical College, Lahore
+CMH Lahore Medical College and Institute of Dentistry, Lahore
+Wah Medical College, Wah Cantt
+Bahria University Medical and Dental College, Karachi
+Fazaia Medical College, Islamabad
+Foundation University Medical College, Islamabad
+Army Medical College, Rawalpindi
+Quetta Institute of Medical Sciences, Quetta
+Lahore University of Biological and Applied Sciences, Lahore
+University of Child Health Sciences, Lahore
+Rawalpindi Women University, Rawalpindi
+National University of Sciences and Technology School of Civil and Environmental Engineering
+Pakistan Institute of Community Ophthalmology, Peshawar
+Khyber Girls Medical College, Peshawar
+Gomal Medical College, Dera Ismail Khan
+Bannu Medical College, Bannu
+Swat Medical College, Swat
+Northwest School of Medicine, Peshawar
+Kabir Medical College, Peshawar
+Rehman College of Rehabilitation Sciences, Peshawar
+Peshawar Medical College, Peshawar
+Frontier Medical College, Abbottabad
+Women Medical College, Abbottabad
+Abbottabad International Medical College, Abbottabad
+Independent Medical College, Faisalabad
+Aziz Fatimah Medical and Dental College, Faisalabad
+Multan Medical and Dental College, Multan
+Bakhtawar Amin Medical and Dental College, Multan
+Continental Medical College, Lahore
+Central Park Medical College, Lahore
+Rashid Latif Medical College, Lahore
+FMH College of Medicine and Dentistry, Lahore
+Lahore Medical and Dental College, Lahore
+Sharif Medical and Dental College, Lahore
+Sialkot Medical College, Sialkot
+Islam Medical College, Sialkot
+M. Islam Medical College, Gujranwala
+Gujranwala Medical College, Gujranwala
+Sahara Medical College, Narowal
+Sughra Shafi Medical Complex, Narowal
+Bashir Institute of Health Sciences, Islamabad
+Shifa College of Medicine, Islamabad
+Rawalpindi Medical College, Rawalpindi
+Azad Jammu and Kashmir Medical College, Muzaffarabad
+Mohtarma Benazir Bhutto Shaheed Medical College, Mirpur
+Poonch Medical College, Rawalakot
+Mirpur University of Science and Technology, Mirpur
+University of Neelum, Athmuqam
+University of Poonch, Rawalakot
+Women University of Bagh, Bagh
