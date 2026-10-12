@@ -32,6 +32,11 @@ export default async function NotificationsPage() {
   const notifications = await getNotifications(scope, 40);
   const unreadCount = notifications.filter((n) => !n.is_read).length;
 
+  async function handleMarkAllRead() {
+    "use server";
+    await markAllNotificationsReadAction();
+  }
+
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-6 sm:py-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -45,7 +50,7 @@ export default async function NotificationsPage() {
         />
 
         {unreadCount > 0 ? (
-          <form action={markAllNotificationsReadAction}>
+          <form action={handleMarkAllRead}>
             <Button type="submit" variant="outline" size="sm" className="gap-1.5">
               <CheckCheck className="size-3.5" /> Mark all as read
             </Button>
@@ -77,11 +82,11 @@ export default async function NotificationsPage() {
                       size="md"
                     />
                     <span className="absolute -bottom-1 -right-1 flex size-5 items-center justify-center rounded-full bg-card shadow-xs">
-                      {n.type === "mention" ? (
+                      {n.type === "mention_post" || n.type === "mention_comment" ? (
                         <AtSign className="size-3 text-accent" />
-                      ) : n.type === "like" ? (
+                      ) : n.type === "post_like" || n.type === "comment_like" ? (
                         <Heart className="size-3 text-danger fill-danger" />
-                      ) : n.type === "reply" ? (
+                      ) : n.type === "reply_to_comment" ? (
                         <MessageSquare className="size-3 text-emerald-500" />
                       ) : (
                         <MessageCircle className="size-3 text-blue-500" />
@@ -95,13 +100,13 @@ export default async function NotificationsPage() {
                       <strong className="font-semibold">
                         {n.actor_display_name || (n.actor_username ? `@${n.actor_username}` : "Someone")}
                       </strong>{" "}
-                      {n.type === "mention" ? (
+                      {n.type === "mention_post" || n.type === "mention_comment" ? (
                         "mentioned you"
-                      ) : n.type === "like" ? (
+                      ) : n.type === "post_like" || n.type === "comment_like" ? (
                         "liked your confession"
-                      ) : n.type === "reply" ? (
+                      ) : n.type === "reply_to_comment" ? (
                         "replied to your comment"
-                      ) : n.type === "comment" ? (
+                      ) : n.type === "comment_on_post" ? (
                         "commented on your confession"
                       ) : (
                         "shared an update"
@@ -113,7 +118,7 @@ export default async function NotificationsPage() {
 
                     {n.comment_excerpt || n.post_excerpt ? (
                       <p className="mt-1 line-clamp-2 text-xs text-muted-foreground italic">
-                        "{n.comment_excerpt || n.post_excerpt}"
+                        &ldquo;{n.comment_excerpt || n.post_excerpt}&rdquo;
                       </p>
                     ) : null}
 

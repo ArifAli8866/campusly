@@ -53,13 +53,13 @@ export default async function JoinedCommunitiesPage() {
                     <p className="mt-0.5 truncate text-xs font-medium text-accent">
                       {channel.university_abbreviation ?? channel.university_name}
                     </p>
-                    {channel.campus_city ? (
-                      <p className="mt-0.5 text-xs text-muted-foreground">{channel.campus_city}</p>
+                    {channel.city ? (
+                      <p className="mt-0.5 text-xs text-muted-foreground">{channel.city}</p>
                     ) : null}
                   </div>
 
-                  <Badge variant="subtle" size="sm" className="capitalize">
-                    {channel.role}
+                  <Badge variant="subtle" size="sm">
+                    Member
                   </Badge>
                 </div>
 

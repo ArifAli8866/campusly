@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { GraduationCap, Search, Users } from "lucide-react";
+import { Search, Users } from "lucide-react";
 
 import { BRAND } from "@/components/brand";
 import { Avatar, Badge, Card, EmptyState } from "@/components/ui/primitives";
@@ -122,11 +122,10 @@ export default async function DiscoverStudentsPage({
                   </div>
                 </div>
 
-                {student.degree_program || student.department ? (
-                  <p className="mt-3 text-xs text-muted-foreground">
-                    <GraduationCap className="inline size-3.5 mr-1" />
-                    {student.degree_program || student.department}
-                    {student.graduation_year ? ` ('${String(student.graduation_year).slice(-2)})` : ""}
+                {student.channels_joined > 0 ? (
+                  <p className="mt-3 text-xs text-muted-foreground flex items-center gap-1.5">
+                    <Users className="size-3.5 text-accent" />
+                    Member of {student.channels_joined} {student.channels_joined === 1 ? "community" : "communities"}
                   </p>
                 ) : null}
 

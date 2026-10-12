@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+/* =============================================================================
+   Campusly design system
+   -----------------------------------------------------------------------------
+   Derived from the supplied UI references:
+     · near-black primary actions on a warm off-white canvas
+     · floating pill navigation with a soft, wide shadow
+     · large-radius cards (16–24px) separated by hairlines, not heavy borders
+     · a single indigo accent used sparingly (badges, links, focus, data viz)
+     · tight display tracking on headings, comfortable 1.6 body leading
+   Everything is a token, so re-branding is a one-file change.
+   ============================================================================= */
+
+@theme {
+  /* -- brand ------------------------------------------------------------- */
+  --brand-50:  #eef0ff;
+  --brand-100: #e0e3ff;
+  --brand-200: #c6cbff;
+  --brand-300: #a3a9ff;
+  --brand-400: #7f81fb;
+  --brand-500: #5b5bd6;
+  --brand-600: #4f46e5;
+  --brand-700: #4338ca;
+  --brand-800: #3730a3;
+  --brand-900: #312e81;
+
+  /* -- neutrals (warm) --------------------------------------------------- */
+  --ink-50:  #f7f7f8;
+  --ink-100: #f1f1f3;
+  --ink-150: #ebebee;
+  --ink-200: #e4e4e8;
+  --ink-300: #d2d2d9;
+  --ink-400: #a1a1ab;
+  --ink-500: #75757f;
+  --ink-600: #57575f;
+  --ink-700: #3f3f46;
+  --ink-800: #27272b;
+  --ink-900: #18181b;
+  --ink-950: #0b0b0d;
+
+  /* -- type -------------------------------------------------------------- */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", monospace;
+
+  --text-display: 3.5rem;
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.035em;
+
+  /* -- shape ------------------------------------------------------------- */
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 1.75rem;
+
+  /* -- elevation (soft, wide, low-opacity — matches the references) ------ */
+  --shadow-hairline: 0 0 0 1px rgb(9 9 11 / 0.06);
+  --shadow-soft: 0 1px 2px rgb(9 9 11 / 0.04), 0 8px 24px -12px rgb(9 9 11 / 0.12);
+  --shadow-lift: 0 1px 2px rgb(9 9 11 / 0.05), 0 18px 40px -18px rgb(9 9 11 / 0.18);
+  --shadow-pill: 0 2px 4px rgb(9 9 11 / 0.04), 0 12px 32px -10px rgb(9 9 11 / 0.16);
+  --shadow-pop: 0 12px 48px -12px rgb(9 9 11 / 0.28);
+}
+
+/* -- semantic tokens ------------------------------------------------------- */
+:root {
+  --background: #ffffff;
+  --background-subtle: var(--ink-50);
+  --foreground: var(--ink-950);
+  --card: #ffffff;
+  --card-foreground: var(--ink-950);
+  --muted: var(--ink-100);
+  --muted-foreground: var(--ink-500);
+  --border: var(--ink-200);
+  --border-strong: var(--ink-300);
+  --input: var(--ink-200);
+  --ring: var(--brand-500);
+
+  --primary: var(--ink-950);
+  --primary-foreground: #ffffff;
+  --secondary: var(--ink-100);
+  --secondary-foreground: var(--ink-900);
+  --accent: var(--brand-500);
+  --accent-foreground: #ffffff;
+  --accent-subtle: var(--brand-50);
+
+  --success: #15803d;
+  --success-subtle: #f0fdf4;
+  --warning: #b45309;
+  --warning-subtle: #fffbeb;
+  --danger: #b91c1c;
+  --danger-subtle: #fef2f2;
+  --info: #1d4ed8;
+  --info-subtle: #eff6ff;
+}
+
+.dark {
+  --background: #0b0b0d;
+  --background-subtle: #121215;
+  --foreground: #f4f4f5;
+  --card: #131316;
+  --card-foreground: #f4f4f5;
+  --muted: #1c1c20;
+  --muted-foreground: #9d9da7;
+  --border: #26262b;
+  --border-strong: #33333a;
+  --input: #2a2a30;
+  --ring: var(--brand-400);
+
+  --primary: #f4f4f5;
+  --primary-foreground: #0b0b0d;
+  --secondary: #1c1c20;
+  --secondary-foreground: #ededf0;
+  --accent: var(--brand-400);
+  --accent-foreground: #0b0b0d;
+  --accent-subtle: #1e1e33;
+
+  --success: #4ade80;
+  --success-subtle: #0d1f14;
+  --warning: #fbbf24;
+  --warning-subtle: #241a06;
+  --danger: #f87171;
+  --danger-subtle: #2a1112;
+  --info: #60a5fa;
+  --info-subtle: #0d1729;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-subtle: var(--background-subtle);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
+  --color-warning: var(--warning);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-danger: var(--danger);
+  --color-danger-subtle: var(--danger-subtle);
+  --color-info: var(--info);
+  --color-info-subtle: var(--info-subtle);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--background-subtle);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    font-variant-ligatures: contextual;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--brand-200);
+    color: var(--ink-950);
+  }
+
+  /* A single, consistent focus treatment everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-size: clamp(2.25rem, 6vw, 3.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    font-weight: 600;
+  }
+
+  .text-title {
+    font-size: clamp(1.5rem, 3.4vw, 2.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.028em;
+    font-weight: 600;
+  }
+
+  /* `.surface` is the workhorse card: hairline border + soft shadow. */
+  .surface {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .surface-flat {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  /* The floating "dock" navigation from the references. */
+  .dock {
+    background-color: color-mix(in srgb, var(--card) 82%, transparent);
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-pill);
+  }
+
+  .grid-canvas {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--border) 60%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--border) 60%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .scroll-mask {
+    mask-image: linear-gradient(to bottom, transparent, black 24px, black calc(100% - 24px), transparent);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--muted) 25%,
+      color-mix(in srgb, var(--muted) 60%, var(--background)) 37%,
+      var(--muted) 63%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+  }
+
+  .animate-rise {
+    animation: rise 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .animate-fade {
+    animation: fade 0.2s ease-out both;
+  }
+  @keyframes fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}

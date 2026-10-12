@@ -21,18 +21,23 @@ export const dynamic = "force-dynamic";
 export default async function ModerationPage({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: "pending" | "resolved" | "dismissed" }>;
+  searchParams: Promise<{ status?: "open" | "in_review" | "resolved" | "dismissed" }>;
 }) {
   const params = await searchParams;
   const context = await getCurrentContext();
   const scope = await viewerScope();
 
   const isModerator = context && (context.role === "moderator" || context.role === "admin");
-  const activeStatus = params.status || "pending";
+  const activeStatus = params.status || "open";
 
   const queue = isModerator
-    ? await getModerationQueue(scope, { status: activeStatus, limit: 30 })
+    ? await getModerationQueue(scope, activeStatus, 30)
     : [];
+
+  async function handleResolve(formData: FormData) {
+    "use server";
+    await resolveReportAction(formData);
+  }
 
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-6 sm:py-8">
@@ -59,7 +64,8 @@ export default async function ModerationPage({
           {/* Status Tabs */}
           <div className="flex items-center gap-2 border-b border-border/70 pb-3">
             {[
-              { id: "pending", label: "Pending Review" },
+              { id: "open", label: "Pending Review" },
+              { id: "in_review", label: "In Review" },
               { id: "resolved", label: "Resolved" },
               { id: "dismissed", label: "Dismissed" },
             ].map((tab) => (
@@ -109,7 +115,7 @@ export default async function ModerationPage({
                     {/* Content Preview */}
                     <div className="rounded-xl border border-border bg-muted/40 p-3.5 text-sm">
                       <p className="text-foreground leading-relaxed italic font-serif">
-                        "{contentBody}"
+                        &ldquo;{contentBody}&rdquo;
                       </p>
                       {item.description ? (
                         <p className="mt-2 text-xs text-muted-foreground border-t border-border/50 pt-2">
@@ -119,9 +125,9 @@ export default async function ModerationPage({
                     </div>
 
                     {/* Action Form */}
-                    {activeStatus === "pending" ? (
+                    {activeStatus === "open" || activeStatus === "in_review" ? (
                       <div className="flex flex-wrap items-center gap-2 pt-1">
-                        <form action={resolveReportAction} className="inline-flex gap-2">
+                        <form action={handleResolve} className="inline-flex gap-2">
                           <input type="hidden" name="reportId" value={item.report_id} />
                           <input type="hidden" name="decision" value="hide_content" />
                           <Button type="submit" size="sm" variant="outline" className="gap-1.5 text-warning">
@@ -129,7 +135,7 @@ export default async function ModerationPage({
                           </Button>
                         </form>
 
-                        <form action={resolveReportAction} className="inline-flex gap-2">
+                        <form action={handleResolve} className="inline-flex gap-2">
                           <input type="hidden" name="reportId" value={item.report_id} />
                           <input type="hidden" name="decision" value="remove_content" />
                           <Button type="submit" size="sm" variant="danger" className="gap-1.5">
@@ -137,7 +143,7 @@ export default async function ModerationPage({
                           </Button>
                         </form>
 
-                        <form action={resolveReportAction} className="inline-flex gap-2">
+                        <form action={handleResolve} className="inline-flex gap-2">
                           <input type="hidden" name="reportId" value={item.report_id} />
                           <input type="hidden" name="decision" value="dismiss" />
                           <Button type="submit" size="sm" variant="ghost" className="gap-1.5">

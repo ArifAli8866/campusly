@@ -32,7 +32,7 @@ export default function ReportAbusePage() {
             Direct In-App Reporting (Fastest)
           </h2>
           <p className="mt-2 text-sm text-foreground leading-relaxed">
-            Every post and comment has a <strong>three-dot menu (...)</strong> with a <strong>"Report"</strong> option. Submitting through that menu snapshots the exact content directly into our moderation queue for expedited review.
+            Every post and comment has a <strong>three-dot menu (...)</strong> with a <strong>&ldquo;Report&rdquo;</strong> option. Submitting through that menu snapshots the exact content directly into our moderation queue for expedited review.
           </p>
         </Card>
 

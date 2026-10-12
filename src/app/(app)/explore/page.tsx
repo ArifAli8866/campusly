@@ -131,10 +131,10 @@ export default async function ExplorePage({
               </Link>
               {POST_CATEGORIES.map((cat) => (
                 <Link
-                  key={cat.id}
-                  href={`/explore?sort=${activeSort}&category=${cat.id}`}
+                  key={cat.value}
+                  href={`/explore?sort=${activeSort}&category=${cat.value}`}
                   className={`rounded-full px-2.5 py-1 text-xs font-medium transition-all ${
-                    activeCategory === cat.id
+                    activeCategory === cat.value
                       ? "bg-muted text-foreground font-semibold"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
@@ -192,10 +192,10 @@ export default async function ExplorePage({
               </h2>
               <ul className="mt-3 space-y-3">
                 {recommended.map((channel) => (
-                  <li key={channel.id} className="flex items-center justify-between gap-2">
+                  <li key={channel.channel_id} className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
                       <Link
-                        href={`/channels/${channel.slug}`}
+                        href={`/channels/${channel.channel_slug}`}
                         className="block truncate text-xs font-semibold hover:underline"
                       >
                         {channel.campus_name}
@@ -205,9 +205,9 @@ export default async function ExplorePage({
                       </p>
                     </div>
                     <JoinButton
-                      channelId={channel.id}
-                      channelSlug={channel.slug}
-                      isMember={channel.is_member}
+                      channelId={channel.channel_id}
+                      channelSlug={channel.channel_slug}
+                      isMember={false}
                       signedIn={Boolean(context)}
                       size="sm"
                     />

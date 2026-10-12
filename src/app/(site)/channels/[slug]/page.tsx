@@ -16,7 +16,7 @@ import { BRAND } from "@/components/brand";
 import { Composer } from "@/components/content/composer";
 import { FeedView } from "@/components/content/feed-view";
 import { JoinButton } from "@/components/content/join-button";
-import { Badge, Card, EmptyState } from "@/components/ui/primitives";
+import { Badge, Card } from "@/components/ui/primitives";
 import { Button } from "@/components/ui/button";
 import { FEED_PAGE_SIZE, POST_CATEGORIES } from "@/lib/constants";
 import { compactNumber } from "@/lib/utils";
@@ -230,12 +230,12 @@ export default async function ChannelPage({
                 All
               </Link>
               {POST_CATEGORIES.map((cat) => {
-                const isSelected = activeCategory === cat.id;
+                const isSelected = activeCategory === cat.value;
                 return (
                   <Link
-                    key={cat.id}
+                    key={cat.value}
                     href={`/channels/${channel.slug}?${new URLSearchParams({
-                      category: cat.id,
+                      category: cat.value,
                       sort: activeSort,
                     }).toString()}`}
                     className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
