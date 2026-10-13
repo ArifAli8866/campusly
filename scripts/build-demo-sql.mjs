@@ -134,9 +134,17 @@ function build() {
     `${q(JSON.stringify({ full_name: person.name }))}::jsonb`,
   ]);
 
-  line("insert into auth.users (id, email, encrypted_password, email_confirmed_at, raw_user_meta_data) values");
-  userRows.forEach((row, index) => line(`  (${row.join(", ")})${index === userRows.length - 1 ? "" : ","}`));
-  line("on conflict (email) do nothing;");
+  line("insert into auth.users (id, email, encrypted_password, email_confirmed_at, raw_user_meta_data)");
+  line("select v.id, v.email, v.encrypted_password, v.email_confirmed_at, v.raw_user_meta_data");
+  line("from (values");
+  userRows.forEach((row, index) =>
+    line(`  (${row[0]}::uuid, ${row[1]}, ${row[2]}, ${row[3]}::timestamptz, ${row[4]})${index === userRows.length - 1 ? "" : ","}`),
+  );
+  line(") as v(id, email, encrypted_password, email_confirmed_at, raw_user_meta_data)");
+  line("where not exists (");
+  line("  select 1 from auth.users u where u.id = v.id or u.email = v.email");
+  line(")");
+  line("on conflict (id) do nothing;");
   line();
   line("-- Profiles are created by the on_auth_user_created trigger. Fill in the rest.");
   line();
