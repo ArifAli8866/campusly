@@ -15,14 +15,26 @@ function read(name: string): string | undefined {
   return value && value.trim() !== "" ? value.trim() : undefined;
 }
 
+function resolveSiteUrl(): string {
+  const configured = read("NEXT_PUBLIC_SITE_URL");
+  if (configured) {
+    const trimmed = configured.replace(/\/+$/, "");
+    return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  }
+  const vercel = read("VERCEL_URL");
+  if (vercel) {
+    const trimmed = vercel.replace(/\/+$/, "");
+    return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  }
+  return "http://localhost:3000";
+}
+
 export const env = {
   supabaseUrl: read("NEXT_PUBLIC_SUPABASE_URL"),
   supabaseAnonKey: read("NEXT_PUBLIC_SUPABASE_ANON_KEY"),
   supabaseServiceRoleKey: read("SUPABASE_SERVICE_ROLE_KEY"),
 
-  siteUrl:
-    read("NEXT_PUBLIC_SITE_URL") ??
-    (read("VERCEL_URL") ? `https://${read("VERCEL_URL")}` : "http://localhost:3000"),
+  siteUrl: resolveSiteUrl(),
 
   localPgDir: read("LOCAL_PG_DIR"),
 

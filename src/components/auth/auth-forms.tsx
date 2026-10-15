@@ -80,6 +80,7 @@ export function SignInForm() {
 
   const next = params.get("next") ?? "/home";
   const checkedEmail = params.get("check-email") === "1";
+  const urlError = params.get("error");
 
   function submit(formData: FormData) {
     setError(null);
@@ -102,6 +103,12 @@ export function SignInForm() {
       {checkedEmail ? (
         <InlineAlert tone="info" title="Confirm your email">
           We sent you a confirmation link. Open it, then sign in here.
+        </InlineAlert>
+      ) : null}
+
+      {urlError ? (
+        <InlineAlert tone="danger" title="Authentication error">
+          {urlError}
         </InlineAlert>
       ) : null}
 
@@ -178,6 +185,7 @@ export function SignUpForm() {
   const [error, setError] = useState<string | null>(null);
   const [accepted, setAccepted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const urlError = params.get("error");
 
   function submit(formData: FormData) {
     setError(null);
@@ -197,6 +205,12 @@ export function SignUpForm() {
 
   return (
     <div className="space-y-5">
+      {urlError ? (
+        <InlineAlert tone="danger" title="Authentication error">
+          {urlError}
+        </InlineAlert>
+      ) : null}
+
       <GoogleButton next={params.get("next") ?? "/onboarding"} label="Sign up with Google" />
 
       <div className="flex items-center gap-3">
