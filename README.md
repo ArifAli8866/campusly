@@ -265,3 +265,5 @@ Under **Environment Variables**, add the four production keys:
 Built with ❤️ by **Arif Ali** ([@ArifAli8866](https://github.com/ArifAli8866))  
 Email: [2arif2143055@gmail.com](mailto:2arif2143055@gmail.com)  
 Repository: [https://github.com/ArifAli8866/campusly](https://github.com/ArifAli8866/campusly)
+
+Not Production ready now.. working on it.
