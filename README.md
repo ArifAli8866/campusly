@@ -1,270 +1,272 @@
-# 🎓 Campusly — Campus Community & Confession Platform
+<div align="center">
 
-[![Next.js 15](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![React 19](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
-[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL_%26_Auth-3ECF8E?style=flat-square&logo=supabase)](https://supabase.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-purple?style=flat-square)](LICENSE)
+# 🎓 Campusly
+### *Your Campus. Your Stories. Your Voice.*
 
-**Campusly** is a privacy-first campus social and confession web platform built specifically for universities across Pakistan. It combines verified student communities, campus-wide discussion channels, and strict cryptographic anonymity for confessions and sensitive student conversations.
+A modern, privacy-first university social network and confession ecosystem engineered for students across Pakistan.
+
+[![Live Status](https://img.shields.io/website?down_color=red&down_message=offline&up_color=success&up_message=online&url=https%3A%2F%2Fcampusly-ten.vercel.app&label=Live%20Status&style=for-the-badge&logo=vercel)](https://campusly-ten.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/🌐%20Live%20Platform-campusly--ten.vercel.app-0070F3?style=for-the-badge&logo=vercel&logoColor=white)](https://campusly-ten.vercel.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ArifAli8866/campusly)
+
+<br/>
+
+[![Next.js 15](https://img.shields.io/badge/Next.js-15.5-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL_%26_RLS-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-8B5CF6?style=flat-square)](LICENSE)
+
+<br/>
+
+[**Explore Live Website »**](https://campusly-ten.vercel.app/) &nbsp;•&nbsp; [**View GitHub Repository »**](https://github.com/ArifAli8866/campusly) &nbsp;•&nbsp; [**Report an Issue »**](https://github.com/ArifAli8866/campusly/issues)
+
+</div>
 
 ---
 
-## 🌟 Key Features
+## 📌 Table of Contents
 
-- 🕵️ **Strict Anonymous Confessions**: Anonymity is guaranteed at the database engine layer. Author identities for anonymous confessions are completely stripped inside PostgreSQL RPC functions so the client never receives identity tokens.
-- 🏫 **Comprehensive University Catalogue**: Verified directories for top Pakistani universities (NUST, FAST-NUCES, LUMS, IBA Karachi, COMSATS, UET Lahore, GIKI, PIEAS, and more) across all regional campuses.
-- 💬 **Campus Community Channels**: Dedicated discussion spaces per university and campus covering Confessions, Academics, Career Advice, Campus Life, Housing & Hostels, and Lost & Found.
-- 🧭 **Multi-Scope Search & Explore**: Real-time fuzzy search across posts, universities, campuses, channels, and fellow students.
-- 🛡️ **Community Moderation Queue**: In-depth moderation dashboard for handling harassment reports, safety triage, doxxing prevention, and content filtering.
-- 🎨 **Nexuma-Inspired Modern UI**: Responsive design featuring floating pill navigation, soft shadows, rounded surfaces, dark/light themes, and mobile navigation sheets.
-- ⚡ **Next.js 15 App Router & Server Actions**: Zero-client-waterfall server rendering, streaming UI, and instant database mutations via Server Actions.
+- [📖 About Campusly](#-about-campusly)
+- [✨ Key Features](#-key-features)
+- [🔒 Privacy & Zero-Trace Anonymity](#-privacy--zero-trace-anonymity)
+- [🏫 Supported Universities & Campuses](#-supported-universities--campuses)
+- [🏛️ System Architecture](#-system-architecture)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [💻 Quickstart (Local Development)](#-quickstart-local-development)
+- [🌐 Deployment](#-deployment)
+- [👨‍💻 Author & Contact](#-author--contact)
+- [📄 License](#-license)
+
+---
+
+## 📖 About Campusly
+
+**Campusly** is a dedicated campus community platform designed to bridge the gap between open student dialogue and personal privacy. 
+
+In university life, students often struggle to find safe, genuine outlets to express their struggles, seek honest academic guidance, or share campus experiences without fear of social judgment, peer pressure, or administrative repercussions. Traditional social networks mix unrelated audiences, while unofficial Facebook or Instagram confession pages suffer from zero moderation, vulnerability to doxxing, and lack of organized campus channels.
+
+**Campusly reimagines student communication** by offering:
+- **Localized Campuses**: Dedicated feeds and channels for individual universities and regional campuses across Pakistan.
+- **True Anonymity by Design**: Anonymity enforced at the PostgreSQL database engine layer — not merely cosmetic front-end masking.
+- **Student-Driven Topics**: Categorized community hubs spanning Confessions, Academics, Career & Internships, Campus Life, Hostels, and Lost & Found.
+- **Safety & Moderation**: Built-in reporting pipelines, content triage, and anti-harassment safeguards to maintain healthy student dialogue.
+
+> [!NOTE]
+> **Campusly is live in production!** Experience the interactive platform today at [**campusly-ten.vercel.app**](https://campusly-ten.vercel.app/).
+
+---
+
+## ✨ Key Features
+
+<table>
+  <tr>
+    <td width="50%">
+      <h3>🕵️ Strict Cryptographic Anonymity</h3>
+      <p>Post with complete peace of mind. Author credentials on anonymous confessions are stripped clean at the database query level before payloads ever touch the API or client network.</p>
+    </td>
+    <td width="50%">
+      <h3>🏛️ Campus-Level Feeds</h3>
+      <p>Dedicated spaces for each university and regional campus (Islamabad, Lahore, Karachi, Peshawar, etc.) ensuring campus news and discussions stay relevant to your specific campus.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>💬 Dedicated Discussion Channels</h3>
+      <p>Explore categorized feeds tailored for student life: <b>Confessions</b>, <b>Academics</b>, <b>Career Advice</b>, <b>Campus Life</b>, <b>Hostels & Housing</b>, and <b>Lost & Found</b>.</p>
+    </td>
+    <td width="50%">
+      <h3>⚡ Real-Time Engagement</h3>
+      <p>Vote on posts, participate in threaded comments, mention classmates with <code>@username</code> resolution, and save posts to your personal bookmarks.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>🔍 Unified Global Fuzzy Search</h3>
+      <p>Instantly search across universities, campuses, channels, discussions, confessions, and student profiles with instantaneous server-side query filtering.</p>
+    </td>
+    <td width="50%">
+      <h3>🛡️ Community Moderation & Safety</h3>
+      <p>Comprehensive moderation queue allowing student moderators to triage flags, prevent doxxing, hide harmful material, and enforce community standards.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>🌓 Modern Nexuma UI/UX</h3>
+      <p>Aesthetic design with floating pill navigation, dark/light theme switching, glassmorphic accents, fluid transitions, and mobile bottom sheet navigation.</p>
+    </td>
+    <td width="50%">
+      <h3>🚀 Blazing Fast Next.js 15</h3>
+      <p>Powered by React 19, Next.js Server Components, Turbopack, and Server Actions for zero client-side waterfalls and sub-second page loads.</p>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 🔒 Privacy & Zero-Trace Anonymity
+
+Unlike typical social apps where anonymity is simply a client-side checkbox, **Campusly enforces privacy at the PostgreSQL database level**:
+
+```
+ ┌─────────────────┐       ┌──────────────────────┐       ┌──────────────────────┐
+ │  Student Client │ ───►  │ Next.js App (Server) │ ───►  │ PostgreSQL Database  │
+ │  (Browser UI)   │       │   (Server Actions)   │       │ (Row Level Security) │
+ └─────────────────┘       └──────────────────────┘       └──────────┬───────────┘
+          ▲                                                          │
+          │         Sanitized Payload (Author Info = NULL)          │
+          └──────────────────────────────────────────────────────────┘
+```
+
+1. **Zero Client Leakage**:
+   When submitting an anonymous confession (`is_anonymous = true`), the author's user ID, username, and profile metadata are permanently masked by stored PostgreSQL RPC functions. Inspecting network payloads in browser DevTools reveals **zero identifying tokens**.
+2. **Row-Level Security (RLS)**:
+   Every query is safeguarded by strict PostgreSQL Row Level Security policies. Users can only modify or delete their own posts, comments, and profile settings.
+3. **Emergency Deanonymization Audit Trail**:
+   To prevent illegal behavior, threats, and doxxing while safeguarding student privacy, deanonymization is strictly locked behind an audited administrative function (`audit_deanonymise`) that logs the admin ID, exact timestamp, and safety rationale into an immutable audit table.
+
+---
+
+## 🏫 Supported Universities & Campuses
+
+Campusly is tailored for premier higher-education institutes across Pakistan, with campus-specific routing:
+
+| University | Regional Campuses | Discussion Hubs |
+| :--- | :--- | :--- |
+| **NUST** (National University of Sciences & Technology) | H-12 Islamabad, Rawalpindi, Risalpur, Karachi | Confessions, Academics, Hostels, Events |
+| **FAST-NUCES** | Islamabad, Lahore, Karachi, Peshawar, Chiniot-Faisalabad | Tech Talk, Exam Stress, Career, Lost & Found |
+| **LUMS** (Lahore University of Management Sciences) | Main Campus Lahore | Campus Life, Academics, Career, Housing |
+| **IBA Karachi** | Main Campus, City Campus | Finance, Business, Student Life, Social |
+| **COMSATS University** | Islamabad, Lahore, Abbottabad, Wah, Attock, Sahiwal, Vehari | Academics, Transport, Confessions, Tech |
+| **UET Lahore** | Main Campus, Kala Shah Kaku, Faisalabad, Rachna | Engineering, Hostels, Societies, Admissions |
+| **GIKI** (Ghulam Ishaq Khan Institute) | Topi Campus (Swabi) | Hostel Life, Engineering, Outdoor, Social |
+| **PIEAS** | Islamabad Campus | Research, Academics, Campus Life |
+
+> *...and expanding to more universities and colleges nationwide!*
+
+---
+
+## 🏛️ System Architecture
+
+```mermaid
+flowchart TD
+    subgraph Client["🖥️ Client Layer (Edge / Browser)"]
+        UI["Nexuma Modern UI\n(Responsive / Dark & Light)"]
+        Components["Radix UI Primitives\n& Tailwind CSS v4"]
+        Pill["Floating Navigation\n& Bottom Sheet"]
+    end
+
+    subgraph AppServer["⚡ Application Server (Vercel)"]
+        Router["Next.js 15 App Router"]
+        ServerActions["Server Actions & Form Mutations"]
+        AuthMiddleware["Supabase Auth Session Guard"]
+        ZodValidator["Zod Schema Validation Layer"]
+    end
+
+    subgraph Database["🗄️ Backend & Persistence (Supabase)"]
+        Postgres["PostgreSQL 15 Database"]
+        RLS["Row Level Security Policies"]
+        RPCFunctions["Anonymity Sanitizer & Feed RPCs"]
+        Storage["Media Storage Bucket (Images/Avatars)"]
+        Auth["Supabase Auth (Google OAuth & Email)"]
+    end
+
+    UI --> Router
+    Router --> ServerActions
+    ServerActions --> ZodValidator
+    ZodValidator --> AuthMiddleware
+    AuthMiddleware --> Postgres
+    Postgres --> RLS
+    RLS --> RPCFunctions
+    RPCFunctions --> UI
+    ServerActions --> Storage
+    UI --> Auth
+```
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 15 (App Router with Turbopack support)
-- **Library**: React 19
-- **Language**: TypeScript 5 (Strict Mode)
-- **Styling**: Tailwind CSS + `lucide-react` icons
-- **Database & Auth**: Supabase (PostgreSQL 15+, Row Level Security, Auth, Storage)
-- **Embedded Local Mode**: `@electric-sql/pglite` (Zero-config local development without external dependencies)
-- **Deployment**: Vercel
+<div align="center">
+
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend Framework** | [![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)](https://nextjs.org/) [![React](https://img.shields.io/badge/React-19.1-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/) |
+| **Language** | [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) |
+| **Styling & Icons** | [![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS_v4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/) [![Lucide Icons](https://img.shields.io/badge/Lucide-React_Icons-F05032?style=flat-square)](https://lucide.dev/) |
+| **UI Primitives** | [![Radix UI](https://img.shields.io/badge/Radix-UI_Primitives-161618?style=flat-square&logo=radix-ui)](https://www.radix-ui.com/) [![Sonner](https://img.shields.io/badge/Sonner-Toast_Notifications-black?style=flat-square)](https://sonner.emilkowal.ski/) |
+| **Database & Auth** | [![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL_%26_Auth-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com/) |
+| **Schema Validation** | [![Zod](https://img.shields.io/badge/Zod-Type_Inference-3E67B1?style=flat-square&logo=zod&logoColor=white)](https://zod.dev/) |
+| **Deployment** | [![Vercel](https://img.shields.io/badge/Vercel-Edge_Platform-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/) |
+
+</div>
 
 ---
 
-## 📋 Table of Contents
+## 💻 Quickstart (Local Development)
 
-1. [Local Development Setup](#-local-development-setup)
-2. [Supabase Database Setup Guide](#-supabase-database-setup-guide)
-3. [Google OAuth Configuration Guide](#-google-oauth-configuration-guide)
-4. [Environment Variables Reference](#-environment-variables-reference)
-5. [Vercel Deployment Guide](#-vercel-deployment-guide)
-6. [Security & Anonymity Architecture](#-security--anonymity-architecture)
+To run Campusly on your local machine:
 
----
-
-## 💻 Local Development Setup
-
-### 1. Clone the Repository
-
+### 1. Clone the repository
 ```bash
 git clone https://github.com/ArifAli8866/campusly.git
 cd campusly
 ```
 
-### 2. Install Dependencies
-
+### 2. Install dependencies
 ```bash
 npm install
 ```
 
-### 3. Configure Environment Variables
-
-Copy `.env.example` to `.env.local`:
-
+### 3. Set up environment variables
+Create a `.env.local` file from the example:
 ```bash
 cp .env.example .env.local
 ```
 
-Fill in your configuration keys (see [Environment Variables Reference](#-environment-variables-reference)).
+Configure your environment keys:
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_SUPABASE_URL=https://your-supabase-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
+```
 
-### 4. Start Development Server
-
+### 4. Run the development server
 ```bash
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) with your browser to explore the app.
 
 ---
 
-## 🗄️ Supabase Database Setup Guide
+## 🌐 Deployment
 
-Follow this step-by-step guide to configure your live PostgreSQL database on [Supabase](https://supabase.com).
+Campusly is deployed with continuous deployment on **Vercel** connected with **Supabase**.
 
-### Step 1: Create a Supabase Project
-
-1. Log into your [Supabase Dashboard](https://supabase.com/dashboard).
-2. Click **New Project**.
-3. Choose an Organization, Name your project (e.g., `campusly-prod`), set a strong Database Password, and select the region closest to your users (e.g., `Singapore (ap-southeast-1)` or `Frankfurt (eu-central-1)`).
-4. Click **Create new project** and wait ~2 minutes for provisioning.
+- **Production Live URL**: [https://campusly-ten.vercel.app/](https://campusly-ten.vercel.app/)
+- **Source Code Repository**: [https://github.com/ArifAli8866/campusly](https://github.com/ArifAli8866/campusly)
 
 ---
 
-### Step 2: Run SQL Migrations in Order
+## 👨‍💻 Author & Contact
 
-Open the **SQL Editor** in your Supabase project sidebar. You will copy and paste the contents of the following files from this repository in **EXACT ORDER**:
+Developed with passion by **Arif Ali**:
 
-#### 📄 Script 1: Database Schema
-- **File**: `supabase/migrations/0001_schema.sql`
-- **What it does**:
-  - Creates core tables: `profiles`, `universities`, `campuses`, `channels`, `channel_members`, `posts`, `comments`, `likes`, `bookmarks`, `reports`, `moderation_actions`.
-  - Configures indexes, foreign keys, timestamps, and status enums.
-- **Action**: Copy all contents of `supabase/migrations/0001_schema.sql`, paste into the Supabase SQL Editor, and click **RUN**.
+- **GitHub**: [@ArifAli8866](https://github.com/ArifAli8866)
+- **Repository**: [ArifAli8866/campusly](https://github.com/ArifAli8866/campusly)
+- **Email**: [2arif2143055@gmail.com](mailto:2arif2143055@gmail.com)
 
-#### 📄 Script 2: PostgreSQL Functions & RPCs
-- **File**: `supabase/migrations/0002_functions.sql`
-- **What it does**:
-  - Creates stored procedures including `feed_posts`, `trending_topics`, `discover_users`, `channel_detail`, `moderation_queue`, and anonymity sanitization routines.
-  - Implements deanonymization audit logs strictly restricted to administrators.
-- **Action**: Copy all contents of `supabase/migrations/0002_functions.sql`, paste into the Supabase SQL Editor, and click **RUN**.
-
-#### 📄 Script 3: Row Level Security (RLS) Policies
-- **File**: `supabase/migrations/0003_rls.sql`
-- **What it does**:
-  - Enables Row Level Security on all tables.
-  - Grants public read access for published confessions and verified campus channels.
-  - Restricts insert/update permissions so students can only modify their own posts, comments, likes, and profiles.
-- **Action**: Copy all contents of `supabase/migrations/0003_rls.sql`, paste into the Supabase SQL Editor, and click **RUN**.
-
-#### 📄 Script 4: Storage Bucket & Upload Policies
-- **File**: `supabase/migrations/0004_storage.sql`
-- **What it does**:
-  - Creates the public `media` storage bucket for post attachments and avatars.
-  - Enforces file size limits (max 5MB) and permitted MIME types (`image/jpeg`, `image/png`, `image/webp`).
-- **Action**: Copy all contents of `supabase/migrations/0004_storage.sql`, paste into the Supabase SQL Editor, and click **RUN**.
-
-#### 📄 Script 5: Notification Triggers
-- **File**: `supabase/migrations/0005_notifications.sql`
-- **What it does**:
-  - Creates notification tables and triggers for likes, replies, comments, and mentions.
-  - Automatically notifies authors without compromising anonymity.
-- **Action**: Copy all contents of `supabase/migrations/0005_notifications.sql`, paste into the Supabase SQL Editor, and click **RUN**.
-
-#### 📄 Script 6: Seed University & Campus Catalogue
-- **File**: `supabase/seed/seed.sql`
-- **What it does**:
-  - Seeds official data for Pakistani universities (NUST, FAST, LUMS, IBA, COMSATS, UET, GIKI, PIEAS, etc.), their respective regional campuses, and default campus community channels.
-- **Action**: Copy all contents of `supabase/seed/seed.sql`, paste into the Supabase SQL Editor, and click **RUN**.
-
-#### 📄 Script 7 (Optional): Starter Demo Feed
-- **File**: `supabase/seed/demo.sql`
-- **What it does**:
-  - Populates realistic starter confessions, questions, and replies across campuses for testing.
-- **Action**: *(Optional)* Copy and run `supabase/seed/demo.sql` if you want pre-populated feed content.
+⭐ **If you find this project helpful or inspiring, please give the repository a star on GitHub!**
 
 ---
 
-## 🔑 Google OAuth Configuration Guide
+## 📄 License
 
-To enable "Continue with Google" sign-in:
+This project is open-source and licensed under the [MIT License](LICENSE).
 
-### Step 1: Create OAuth Credentials in Google Cloud Console
-
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project or select an existing one (e.g., `Campusly`).
-3. Navigate to **APIs & Services** > **OAuth consent screen**:
-   - User Type: **External** -> Click **Create**.
-   - App Name: `Campusly`
-   - User Support Email: your email address
-   - Developer Contact Information: your email address
-   - Save and Continue through Scopes (`.../auth/userinfo.email`, `.../auth/userinfo.profile`, `openid`).
-4. Navigate to **APIs & Services** > **Credentials**:
-   - Click **+ CREATE CREDENTIALS** > **OAuth client ID**.
-   - Application type: **Web application**.
-   - Name: `Campusly Auth`.
-   - **Authorized JavaScript origins**:
-     - `http://localhost:3000`
-     - `https://your-app-name.vercel.app` *(add after deploying to Vercel)*
-   - **Authorized redirect URIs**:
-     - `https://<YOUR_SUPABASE_PROJECT_REF>.supabase.co/auth/v1/callback`
-       *(Find your Project Reference ID in your Supabase Project Settings > General)*
-5. Click **Create** and copy your **Client ID** and **Client Secret**.
-
----
-
-### Step 2: Configure Google Provider in Supabase
-
-1. In your [Supabase Dashboard](https://supabase.com/dashboard), navigate to **Authentication** > **Providers**.
-2. Click on **Google** to expand its settings:
-   - Toggle **Enable Google provider** to ON.
-   - Paste your **Client ID**.
-   - Paste your **Client Secret**.
-   - Click **Save**.
-3. In **Authentication** > **URL Configuration**:
-   - **Site URL**: `https://your-app-name.vercel.app` (or `http://localhost:3000` during local testing).
-   - **Redirect URLs**: Add the following patterns:
-     - `http://localhost:3000/**`
-     - `https://your-app-name.vercel.app/**`
-     - `https://*-your-team.vercel.app/**` *(for preview deployments)*
-
----
-
-## ⚙️ Environment Variables Reference
-
-Create a `.env.local` file in the root directory:
-
-| Variable | Description | Example / Default |
-| :--- | :--- | :--- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical URL of your deployment | `http://localhost:3000` or `https://campusly.vercel.app` |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase Project URL | `https://xyzprojectref.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase public anonymous API key | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase private service role key (server-only) | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...` |
-| `NEXT_PUBLIC_DEMO_MODE` | Toggle demo fallback mode | `false` |
-
-> 🔒 **Security Notice**: Never commit `SUPABASE_SERVICE_ROLE_KEY` to public version control. It bypasses Row Level Security and is only used by protected server-side administrative actions.
-
----
-
-## 🚀 Vercel Deployment Guide
-
-Deploying Campusly to Vercel takes less than 3 minutes:
-
-### Step 1: Push Code to GitHub
-
-Your code is pushed to [https://github.com/ArifAli8866/campusly](https://github.com/ArifAli8866/campusly).
-
-### Step 2: Import Project in Vercel
-
-1. Log into [Vercel](https://vercel.com).
-2. Click **Add New...** > **Project**.
-3. Select your GitHub repository: `ArifAli8866/campusly`.
-4. Framework Preset: **Next.js** (automatically detected).
-5. Root Directory: `./`.
-
-### Step 3: Add Environment Variables in Vercel
-
-Under **Environment Variables**, add the four production keys:
-
-1. `NEXT_PUBLIC_SITE_URL`: `https://your-project.vercel.app`
-2. `NEXT_PUBLIC_SUPABASE_URL`: `https://<YOUR-PROJECT-REF>.supabase.co`
-3. `NEXT_PUBLIC_SUPABASE_ANON_KEY`: `your-anon-key`
-4. `SUPABASE_SERVICE_ROLE_KEY`: `your-service-role-key`
-
-### Step 4: Deploy
-
-1. Click **Deploy**.
-2. Once the build completes (~1 minute), Vercel will assign you a production URL (e.g., `https://campusly.vercel.app`).
-3. Copy your live Vercel URL and update:
-   - **Google Cloud Console**: Add your Vercel URL to *Authorized JavaScript origins*.
-   - **Supabase Auth**: Update *Site URL* and *Redirect URLs* with your live Vercel domain.
-
----
-
-## 🛡️ Security & Anonymity Architecture
-
-1. **Zero Client Leakage**:
-   When a user posts anonymously (`is_anonymous = true`), the author's user ID and profile information are nullified inside Postgres stored functions before returning data to the API layer. Inspecting network requests in Chrome DevTools reveals zero author identifiers.
-
-2. **Deanonymization Safeguards**:
-   Author data can only be accessed under emergency circumstances (severe safety/legal threats) through an audited function (`audit_deanonymise`) that logs the administrator's ID, the reason, and an immutable timestamp into `moderation_actions`.
-
-3. **Row Level Security (RLS)**:
-   Every table enforces strict RLS policies in Postgres. A malicious client attempting direct API calls cannot modify or delete content belonging to other students.
-
-4. **Input Sanitization**:
-   All user input is validated using Zod schemas on the server before database execution.
-
----
-
-## 👨‍💻 Author & Contributions
-
-Built with ❤️ by **Arif Ali** ([@ArifAli8866](https://github.com/ArifAli8866))  
-Email: [2arif2143055@gmail.com](mailto:2arif2143055@gmail.com)  
-Repository: [https://github.com/ArifAli8866/campusly](https://github.com/ArifAli8866/campusly)
-
-Not Production ready now.. working on it.
-Working will be start and will be deploy soon....
+<div align="center">
+  <sub>Campusly &copy; 2026 • Built for Pakistani university students.</sub>
+</div>
