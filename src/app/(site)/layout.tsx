@@ -3,9 +3,9 @@ import { SiteHeader } from "@/components/layout/site-header";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-dvh flex-col">
+    <div className="flex min-h-dvh flex-col bg-background">
       <SiteHeader variant="site" />
-      <main id="main" className="flex-1">
+      <main id="main" className="relative z-10 flex-1 bg-background">
         {children}
       </main>
       <SiteFooter />

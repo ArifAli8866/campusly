@@ -18,9 +18,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     : [];
 
   return (
-    <div className="flex min-h-dvh flex-col">
+    <div className="flex min-h-dvh flex-col bg-background">
       <SiteHeader variant="app" />
-      <main id="main" className="flex-1 pb-20 md:pb-0">
+      <main id="main" className="relative z-10 flex-1 bg-background pb-20 md:pb-0">
         {children}
       </main>
       <SiteFooter />
