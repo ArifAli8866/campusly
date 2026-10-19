@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Compass, SearchX } from "lucide-react";
+import { Compass, Search, SearchX } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/primitives";
@@ -21,6 +21,11 @@ export default function NotFound() {
               </Link>
             </Button>
             <Button asChild variant="outline">
+              <Link href="/search">
+                <Search /> Search
+              </Link>
+            </Button>
+            <Button asChild variant="ghost">
               <Link href="/">Go home</Link>
             </Button>
           </div>
