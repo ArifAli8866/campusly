@@ -15,7 +15,7 @@ export function ThemeToggle() {
   // Render a stable placeholder until the theme is known, so the button never
   // flips icon on hydration.
   if (!mounted) {
-    return <Button variant="ghost" size="icon" aria-hidden className="opacity-0" disabled />;
+    return <Button variant="ghost" size="icon" aria-hidden className="opacity-0" disabled aria-label="Toggle theme" />;
   }
 
   const isDark = resolvedTheme === "dark";
@@ -27,7 +27,7 @@ export function ThemeToggle() {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
     >
-      {isDark ? <Sun /> : <Moon />}
+      {isDark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
     </Button>
   );
 }
