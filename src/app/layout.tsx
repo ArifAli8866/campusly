@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 
 import { BRAND } from "@/components/brand";
@@ -8,12 +7,6 @@ import { TooltipProvider } from "@/components/ui/overlays";
 import { env } from "@/lib/env";
 
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.siteUrl),
@@ -77,7 +70,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html lang="en" suppressHydrationWarning>
       <body className="min-h-dvh antialiased">
         <ThemeProvider>
           <TooltipProvider>
