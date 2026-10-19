@@ -1,16 +1,33 @@
 {
+  "id": "/",
   "name": "Campusly — Your campus. Your stories. Your voice.",
   "short_name": "Campusly",
   "description": "University confession and discussion communities for campuses across Pakistan. Read freely, post anonymously when you want to.",
   "start_url": "/home",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#f7f7f5",
-  "theme_color": "#0f1a17",
+  "background_color": "#ffffff",
+  "theme_color": "#0b0b0d",
   "orientation": "portrait-primary",
   "categories": ["social", "education"],
   "icons": [
     { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
     { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Write a Confession",
+      "short_name": "Confess",
+      "description": "Share a confession or start a discussion on your campus",
+      "url": "/compose",
+      "icons": [{ "src": "/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Explore Campuses",
+      "short_name": "Explore",
+      "description": "Discover active discussions across Pakistan universities",
+      "url": "/explore",
+      "icons": [{ "src": "/icon.svg", "sizes": "any" }]
+    }
   ]
 }
