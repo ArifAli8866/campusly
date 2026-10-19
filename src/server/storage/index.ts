@@ -54,7 +54,7 @@ const EXTENSIONS: Record<string, string> = {
 };
 
 /** Magic-byte check. Trusting the declared MIME type is not enough. */
-function sniffMime(bytes: Uint8Array): string | null {
+export function sniffMime(bytes: Uint8Array): string | null {
   if (bytes.length < 12) return null;
 
   if (bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff) return "image/jpeg";
@@ -159,5 +159,8 @@ export async function uploadImage(
 export function mediaUrl(path: string | null | undefined): string | null {
   if (!path) return null;
   if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("/")) return path;
-  return `${env.supabaseUrl ? "" : ""}/media/${path.replace(/^\//, "")}`;
+  if (dataBackend() === "supabase" && env.supabaseUrl) {
+    return `${env.supabaseUrl}/storage/v1/object/public/${path.replace(/^\//, "")}`;
+  }
+  return `/media/${path.replace(/^\//, "")}`;
 }
