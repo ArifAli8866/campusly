@@ -319,9 +319,9 @@ function build() {
   line("select v.id, v.author_id, ch.id, v.body, true, now()");
   line("from (values");
   const draftRows = [
-    ["ayesha", "fast-nuces-peshawar", "Midterms week survival guide — does anyone actually finish the DB assignment on time?", "0"],
-    ["talha", "nust-islamabad", "Draft: honest review of the fourth semester workload. Needs a conclusion.", "1"],
-  ].map(([key, slug, body, index], i, all) =>
+    ["ayesha", "fast-nuces-peshawar", "Midterms week survival guide — does anyone actually finish the DB assignment on time?"],
+    ["talha", "nust-islamabad", "Draft: honest review of the fourth semester workload. Needs a conclusion."],
+  ].map(([key, slug, body], i, all) =>
     `  (${q(uid(`draft:${i}`))}::uuid, ${q(uid(`user:${key}`))}::uuid, ${q(body)}, ${q(slug)})${i === all.length - 1 ? "" : ","}`,
   );
   draftRows.forEach((row) => line(row));
