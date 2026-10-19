@@ -7,6 +7,7 @@ A modern, privacy-first university social network and confession ecosystem engin
 
 [![Live Status](https://img.shields.io/website?down_color=red&down_message=offline&up_color=success&up_message=online&url=https%3A%2F%2Fcampusly-ten.vercel.app&label=Live%20Status&style=for-the-badge&logo=vercel)](https://campusly-ten.vercel.app/)
 [![Live Demo](https://img.shields.io/badge/🌐%20Live%20Platform-campusly--ten.vercel.app-0070F3?style=for-the-badge&logo=vercel&logoColor=white)](https://campusly-ten.vercel.app/)
+[![CI Workflow](https://img.shields.io/github/actions/workflow/status/ArifAli8866/campusly/ci.yml?branch=main&label=CI%20Build&style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/ArifAli8866/campusly/actions)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ArifAli8866/campusly)
 
 <br/>
@@ -34,6 +35,7 @@ A modern, privacy-first university social network and confession ecosystem engin
 - [🏫 Supported Universities & Campuses](#-supported-universities--campuses)
 - [🏛️ System Architecture](#-system-architecture)
 - [🛠️ Tech Stack](#️-tech-stack)
+- [🧪 Automated Testing & Security Verification](#-automated-testing--security-verification)
 - [💻 Quickstart (Local Development)](#-quickstart-local-development)
 - [🌐 Deployment](#-deployment)
 - [👨‍💻 Author & Contact](#-author--contact)
@@ -198,9 +200,33 @@ flowchart TD
 | **UI Primitives** | [![Radix UI](https://img.shields.io/badge/Radix-UI_Primitives-161618?style=flat-square&logo=radix-ui)](https://www.radix-ui.com/) [![Sonner](https://img.shields.io/badge/Sonner-Toast_Notifications-black?style=flat-square)](https://sonner.emilkowal.ski/) |
 | **Database & Auth** | [![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL_%26_Auth-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com/) |
 | **Schema Validation** | [![Zod](https://img.shields.io/badge/Zod-Type_Inference-3E67B1?style=flat-square&logo=zod&logoColor=white)](https://zod.dev/) |
+| **Testing Suite** | [![Vitest](https://img.shields.io/badge/Vitest-Unit_Tests-FCC72B?style=flat-square&logo=vitest&logoColor=black)](https://vitest.dev/) [![PGlite](https://img.shields.io/badge/PGlite-RLS_Security_Tests-4169E1?style=flat-square)](https://pglite.dev/) |
 | **Deployment** | [![Vercel](https://img.shields.io/badge/Vercel-Edge_Platform-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/) |
 
 </div>
+
+---
+
+## 🧪 Automated Testing & Security Verification
+
+Campusly includes automated testing covering unit functionality, validation schemas, token parsing, and PostgreSQL row-level security (RLS):
+
+```bash
+# Run the entire test suite (unit tests + security verification)
+npm run test:all
+
+# Run Vitest unit tests
+npm test
+
+# Run isolated database security smoke tests against embedded Postgres
+npm run test:security
+
+# Run code linter and TypeScript static analysis
+npm run lint
+npm run typecheck
+```
+
+The database smoke tests (`scripts/verify-security.mjs`) verify 37 distinct security invariants, including column privilege revocation on `author_id`, anonymized projection rules, and role-based access control.
 
 ---
 
