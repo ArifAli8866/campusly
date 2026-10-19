@@ -13,8 +13,10 @@ export async function GET() {
     steps.counts = counts[0]?.catalogue_counts ?? null;
     const feed = await db.rpc<{ id: string }>("feed_posts", { p_limit: 2 });
     steps.feed = feed.length;
+    steps.status = "ok";
   } catch (error) {
+    steps.status = "error";
     steps.error = String((error as Error)?.message ?? error).slice(0, 300);
   }
-  return NextResponse.json(steps);
+  return NextResponse.json(steps, { status: steps.status === "ok" ? 200 : 503 });
 }

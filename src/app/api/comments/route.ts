@@ -25,24 +25,31 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "A valid postId is required." }, { status: 400 });
   }
 
-  const scope = await viewerScope();
-  // Keyset pagination on (created_at, id), matching the feed: a comment added
-  // while a student is reading cannot shift a page and duplicate or skip a row.
-  const comments = await getComments(scope, postId, {
-    cursor,
-    cursorId: UUID.test(cursorId ?? "") ? cursorId : null,
-    limit: COMMENT_PAGE_SIZE,
-  });
+  try {
+    const scope = await viewerScope();
+    // Keyset pagination on (created_at, id), matching the feed: a comment added
+    // while a student is reading cannot shift a page and duplicate or skip a row.
+    const comments = await getComments(scope, postId, {
+      cursor,
+      cursorId: UUID.test(cursorId ?? "") ? cursorId : null,
+      limit: COMMENT_PAGE_SIZE,
+    });
 
-  const entries = await Promise.all(
-    comments
-      .filter((comment) => comment.reply_count > 0)
-      .map(async (comment) => [comment.id, await getReplies(scope, comment.id)] as const),
-  );
+    const entries = await Promise.all(
+      comments
+        .filter((comment) => comment.reply_count > 0)
+        .map(async (comment) => [comment.id, await getReplies(scope, comment.id)] as const),
+    );
 
-  return NextResponse.json({
-    comments,
-    replies: Object.fromEntries(entries),
-    hasMore: comments.length === COMMENT_PAGE_SIZE,
-  });
+    return NextResponse.json({
+      comments,
+      replies: Object.fromEntries(entries),
+      hasMore: comments.length === COMMENT_PAGE_SIZE,
+    });
+  } catch {
+    return NextResponse.json(
+      { error: "Could not load comments. Please try again." },
+      { status: 500 },
+    );
+  }
 }
