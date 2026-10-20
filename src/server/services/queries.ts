@@ -2,7 +2,10 @@ import "server-only";
 
 import { dbAs, type Db } from "@/lib/db";
 import type {
+  CampusChoice,
+  CampusRow,
   ChannelOverview,
+  ChannelRow,
   CommentView,
   DiscoveredUser,
   ModerationQueueItem,
@@ -17,7 +20,7 @@ import type {
   TrendingTopic,
   UniversityCard,
   UniversityChoice,
-  CampusChoice,
+  UniversityRow,
 } from "@/lib/db/types";
 import { getSessionUser } from "@/server/auth/session";
 
@@ -119,7 +122,6 @@ export interface UniversityCardsOptions {
   sort?: "name" | "most_joined" | "recently_active" | "campuses";
   limit?: number;
   offset?: number;
-  slug?: string | null;
 }
 
 export async function getUniversityCards(
@@ -134,54 +136,129 @@ export async function getUniversityCards(
     p_sort: options.sort ?? "name",
     p_limit: options.limit ?? 24,
     p_offset: options.offset ?? 0,
-    p_slug: options.slug ?? null,
   });
 }
 
 /**
  * Robustly look up a university by slug or abbreviation.
- * Checks university_cards with slug parameter, query matching, and fallback strategies.
+ * 1. Queries the universities table directly (100% resilient across database schemas).
+ * 2. Fetches associated campuses and channels, ensuring each campus points to an active channel ID and slug.
+ * 3. Falls back to university_cards RPC search if necessary.
  */
 export async function getUniversityBySlug(scope: ViewerScope, slug: string): Promise<UniversityCard | null> {
   const cleaned = slug.trim().toLowerCase();
   if (!cleaned) return null;
 
-  // 1. Direct RPC lookup by slug
-  const cards = await scope.db
-    .rpc<UniversityCard>("university_cards", {
-      p_slug: cleaned,
-      p_query: cleaned,
-      p_limit: 10,
+  // 1. Direct query against universities table
+  const unis = await scope.db
+    .select<UniversityRow>("universities", {
+      where: { slug: cleaned },
+      limit: 1,
     })
-    .catch(() => [] as UniversityCard[]);
+    .catch(() => [] as UniversityRow[]);
 
-  const exact = cards.find(
+  let uni: UniversityRow | undefined = unis[0];
+
+  // If not found by slug, try matching by uppercase abbreviation (e.g. NUST, FAST, LUMS)
+  if (!uni) {
+    const byAbbr = await scope.db
+      .select<UniversityRow>("universities", {
+        where: { abbreviation: cleaned.toUpperCase() },
+        limit: 1,
+      })
+      .catch(() => [] as UniversityRow[]);
+    uni = byAbbr[0];
+  }
+
+  // If still not found, try matching normalized slug across all universities
+  if (!uni) {
+    const all = await scope.db.select<UniversityRow>("universities", { limit: 300 }).catch(() => [] as UniversityRow[]);
+    uni = all.find(
+      (u) =>
+        u.slug.toLowerCase() === cleaned ||
+        u.abbreviation?.toLowerCase() === cleaned ||
+        u.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === cleaned,
+    );
+  }
+
+  if (uni) {
+    // Fetch campuses and channels for this university directly from tables
+    const [campuses, channels, memberCountRows, postCountRows] = await Promise.all([
+      scope.db
+        .select<CampusRow>("campuses", {
+          where: { university_id: uni.id, is_active: true },
+        })
+        .catch(() => [] as CampusRow[]),
+      scope.db
+        .select<ChannelRow>("channels", {
+          where: { university_id: uni.id, is_active: true },
+        })
+        .catch(() => [] as ChannelRow[]),
+      scope.db
+        .select<{ id: string }>("channel_members", {
+          where: { university_id: uni.id },
+        })
+        .catch(() => [] as { id: string }[]),
+      scope.db
+        .select<{ id: string }>("posts", {
+          where: { university_id: uni.id, moderation_status: "published" },
+        })
+        .catch(() => [] as { id: string }[]),
+    ]);
+
+    // Map each campus to its active channel ID and channel slug
+    const mappedCampuses = campuses
+      .sort((a, b) => (b.is_main ? 1 : 0) - (a.is_main ? 1 : 0) || a.name.localeCompare(b.name))
+      .map((campus) => {
+        const channel = channels.find((ch) => ch.campus_id === campus.id);
+        const channelId = channel?.id ?? campus.id;
+        const channelSlug = channel?.slug ?? campus.slug;
+        return {
+          id: channelId,
+          slug: channelSlug,
+          name: campus.name,
+          city: campus.city,
+          member_count: 0,
+        };
+      });
+
+    return {
+      id: uni.id,
+      name: uni.name,
+      slug: uni.slug,
+      abbreviation: uni.abbreviation,
+      description: uni.description,
+      logo_url: uni.logo_url,
+      banner_url: uni.banner_url,
+      city: uni.city,
+      province: uni.province,
+      institution_type: uni.institution_type,
+      is_featured: uni.is_featured,
+      campus_count: campuses.length,
+      member_count: memberCountRows.length,
+      post_count: postCountRows.length,
+      week_post_count: 0,
+      viewer_is_member: false,
+      campuses: mappedCampuses,
+    };
+  }
+
+  // Fallback: try university_cards with safe 7 arguments
+  const fallbackCards = await getUniversityCards(scope, { query: cleaned, limit: 10 }).catch(() => [] as UniversityCard[]);
+  const match = fallbackCards.find(
     (u) =>
       u.slug.toLowerCase() === cleaned ||
       u.abbreviation?.toLowerCase() === cleaned ||
       u.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === cleaned,
   );
-  if (exact) return exact;
-  if (cards.length > 0) return cards[0];
-
-  // 2. Fallback query with general query string
-  const fallback = await getUniversityCards(scope, { query: cleaned, limit: 10 });
-  const fallbackMatch = fallback.find(
-    (u) =>
-      u.slug.toLowerCase() === cleaned ||
-      u.abbreviation?.toLowerCase() === cleaned ||
-      u.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === cleaned,
-  );
-  if (fallbackMatch) return fallbackMatch;
-  if (fallback.length > 0) return fallback[0];
-
-  return null;
+  return match ?? fallbackCards[0] ?? null;
 }
 
 export async function getChannelOverview(scope: ViewerScope, slug: string): Promise<ChannelOverview | null> {
   const cleaned = slug.trim();
   if (!cleaned) return null;
 
+  // 1. Try channel_overview RPC first
   const rows = await scope.db
     .rpc<{ channel_overview: ChannelOverview }>("channel_overview", { p_slug: cleaned })
     .catch(() => [] as { channel_overview: ChannelOverview }[]);
@@ -190,13 +267,76 @@ export async function getChannelOverview(scope: ViewerScope, slug: string): Prom
     return rows[0].channel_overview;
   }
 
-  // Fallback: If lowercase differs from original, try lowercase
+  // 2. If lowercase differs, try lowercase
   if (cleaned.toLowerCase() !== cleaned) {
     const fallbackRows = await scope.db
       .rpc<{ channel_overview: ChannelOverview }>("channel_overview", { p_slug: cleaned.toLowerCase() })
       .catch(() => [] as { channel_overview: ChannelOverview }[]);
     if (fallbackRows[0]?.channel_overview) {
       return fallbackRows[0].channel_overview;
+    }
+  }
+
+  // 3. Fallback: if the requested slug is a campus slug (e.g. main-campus), find the channel for that campus
+  const campuses = await scope.db
+    .select<CampusRow>("campuses", {
+      where: { slug: cleaned.toLowerCase() },
+      limit: 1,
+    })
+    .catch(() => [] as CampusRow[]);
+
+  if (campuses[0]) {
+    const channels = await scope.db
+      .select<ChannelRow>("channels", {
+        where: { campus_id: campuses[0].id },
+        limit: 1,
+      })
+      .catch(() => [] as ChannelRow[]);
+
+    if (channels[0]) {
+      const channelRows = await scope.db
+        .rpc<{ channel_overview: ChannelOverview }>("channel_overview", { p_slug: channels[0].slug })
+        .catch(() => [] as { channel_overview: ChannelOverview }[]);
+      if (channelRows[0]?.channel_overview) {
+        return channelRows[0].channel_overview;
+      }
+    }
+  }
+
+  // 4. Fallback: if the requested slug is a university slug or abbreviation (e.g. /channels/nust)
+  const unis = await scope.db
+    .select<UniversityRow>("universities", {
+      where: { slug: cleaned.toLowerCase() },
+      limit: 1,
+    })
+    .catch(() => [] as UniversityRow[]);
+
+  const uni =
+    unis[0] ??
+    (
+      await scope.db
+        .select<UniversityRow>("universities", {
+          where: { abbreviation: cleaned.toUpperCase() },
+          limit: 1,
+        })
+        .catch(() => [] as UniversityRow[])
+    )[0];
+
+  if (uni) {
+    const channels = await scope.db
+      .select<ChannelRow>("channels", {
+        where: { university_id: uni.id, is_active: true },
+        limit: 1,
+      })
+      .catch(() => [] as ChannelRow[]);
+
+    if (channels[0]) {
+      const channelRows = await scope.db
+        .rpc<{ channel_overview: ChannelOverview }>("channel_overview", { p_slug: channels[0].slug })
+        .catch(() => [] as { channel_overview: ChannelOverview }[]);
+      if (channelRows[0]?.channel_overview) {
+        return channelRows[0].channel_overview;
+      }
     }
   }
 

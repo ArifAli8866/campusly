@@ -12,6 +12,7 @@ dist/
 
 # local data (embedded Postgres + uploaded media)
 .data/
+.mcp.json
 
 # environment
 .env
