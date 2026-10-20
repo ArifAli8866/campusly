@@ -10,7 +10,7 @@ import { Badge, Card, EmptyState } from "@/components/ui/primitives";
 import { Button } from "@/components/ui/button";
 import { compactNumber, pluralize } from "@/lib/utils";
 import { getSessionUser } from "@/server/auth/session";
-import { getFeed, getMentionMaps, getUniversityCards, viewerScope } from "@/server/services/queries";
+import { getFeed, getMentionMaps, getUniversityBySlug, viewerScope } from "@/server/services/queries";
 
 export const dynamic = "force-dynamic";
 
@@ -21,8 +21,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const scope = await viewerScope();
-  const unis = await getUniversityCards(scope, { query: slug, limit: 1 });
-  const uni = unis.find((u) => u.slug === slug) ?? unis[0];
+  const uni = await getUniversityBySlug(scope, slug);
 
   if (!uni) {
     return { title: `University Not Found — ${BRAND.name}` };
@@ -43,15 +42,19 @@ export default async function UniversityDetailPage({
   const scope = await viewerScope();
   const session = await getSessionUser();
 
-  const unis = await getUniversityCards(scope, { query: slug, limit: 5 });
-  const uni = unis.find((u) => u.slug === slug || u.abbreviation?.toLowerCase() === slug.toLowerCase()) ?? unis[0];
+  const uni = await getUniversityBySlug(scope, slug);
 
   if (!uni) {
     notFound();
   }
 
   // Get first page of posts for this university
-  const posts = await getFeed(scope, { search: uni.name, limit: 10 });
+  const primaryChannelId = uni.campuses[0]?.id;
+  const posts = await getFeed(scope, {
+    channelId: primaryChannelId ?? undefined,
+    search: primaryChannelId ? undefined : uni.name,
+    limit: 10,
+  });
   const mentionMaps = await getMentionMaps(scope, { postIds: posts.map((p) => p.id) });
 
   const monogram = (uni.abbreviation ?? uni.name)

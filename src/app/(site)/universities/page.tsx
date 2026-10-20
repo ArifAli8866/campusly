@@ -39,7 +39,7 @@ export default async function UniversitiesPage({
       province: params.province || null,
       type: params.type || null,
       sort: params.sort || "most_joined",
-      limit: 60,
+      limit: 300,
     }),
     getCatalogueCounts(scope),
   ]);

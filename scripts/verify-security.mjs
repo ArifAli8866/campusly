@@ -307,6 +307,54 @@ console.log("\n── Profile, roles and authorisation ────────�
   check("weekly_highlights never leaks an anonymous author", !anyLeak);
 }
 
+// -----------------------------------------------------------------------------
+// University & Channel Routing
+// -----------------------------------------------------------------------------
+console.log("\n── University and channel routing ────────────────────────────");
+
+// 19. university_cards finds university by exact slug and abbreviation
+{
+  const rSlug = await asActor(pg, null, `select * from public.university_cards(p_query => 'bahauddin-zakariya-university')`);
+  check("university_cards resolves university by hyphenated slug", rSlug.ok && rSlug.rows.length >= 1 && rSlug.rows[0].slug === "bahauddin-zakariya-university");
+
+  const rAbbr = await asActor(pg, null, `select * from public.university_cards(p_query => 'nust')`);
+  check("university_cards resolves university by abbreviation", rAbbr.ok && rAbbr.rows.length >= 1 && rAbbr.rows[0].abbreviation === "NUST");
+}
+
+// 20. university_cards maps campuses to valid channel IDs and slugs
+{
+  const r = await asActor(pg, null, `select * from public.university_cards(p_query => 'fast-national-university-of-computer-and-emerging-sciences')`);
+  const campuses = r.rows?.[0]?.campuses ?? [];
+  const allHaveChannel = campuses.length > 0 && campuses.every((c) => Boolean(c.id && c.slug && c.channel_slug));
+  check("university_cards returns campuses mapped with valid channel IDs and slugs", allHaveChannel);
+}
+
+// 21. channel_overview resolves by channel slug, campus slug, and university slug
+{
+  const rChan = await asActor(pg, null, `select * from public.channel_overview('fast-national-university-of-computer-and-emerging-sciences-islamabad-campus')`);
+  check("channel_overview resolves by exact channel slug", rChan.ok && rChan.rows[0]?.channel_overview?.name?.includes("Islamabad"));
+
+  const rCamp = await asActor(pg, null, `select * from public.channel_overview('abbottabad-university-of-science-and-technology-main-campus')`);
+  check("channel_overview resolves campus slug when different from channel slug", rCamp.ok && Boolean(rCamp.rows[0]?.channel_overview?.id));
+
+  const rUni = await asActor(pg, null, `select * from public.channel_overview('bahauddin-zakariya-university')`);
+  check("channel_overview resolves university slug to its main community", rUni.ok && Boolean(rUni.rows[0]?.channel_overview?.id));
+
+  const rAcronym = await asActor(pg, null, `select * from public.channel_overview('lums')`);
+  check("channel_overview resolves university acronym", rAcronym.ok && Boolean(rAcronym.rows[0]?.channel_overview?.id));
+}
+
+// 22. All universities in the directory resolve without 404
+{
+  const allUnis = await pg.query("select slug from public.universities where is_active and status = 'active'");
+  let unresolved = 0;
+  for (const u of allUnis.rows) {
+    const res = await pg.query("select * from public.university_cards(p_query => $1)", [u.slug]);
+    if (!res.rows?.[0]) unresolved++;
+  }
+  check("all universities in directory resolve successfully", unresolved === 0, `${unresolved} unresolved`);
+}
+
 console.log(`\n${passed} passed, ${failed} failed\n`);
 await pg.close();
 process.exit(failed === 0 ? 0 : 1);

@@ -4434,8 +4434,8 @@ values (
   'University of Attock is located in Attock, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Attock',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -4482,8 +4482,8 @@ values (
   'University of Bahawalnagar is located in Bahawalnagar, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Bahawalnagar',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -4554,8 +4554,8 @@ values (
   'University of Bhakkar is located in Bhakkar, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Bhakkar',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -4914,8 +4914,8 @@ values (
   'University of Hafizabad is located in Hafizabad, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Hafizabad',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5034,8 +5034,8 @@ values (
   'University of Jhelum is located in Jhelum, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Jhelum',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5058,8 +5058,8 @@ values (
   'University of Kamalia is located in Kamalia, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Kamalia',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5106,8 +5106,8 @@ values (
   'University of Kasur is located in Kasur, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Kasur',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5130,8 +5130,8 @@ values (
   'University of Khanewal is located in Khanewal, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Khanewal',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5154,8 +5154,8 @@ values (
   'University of Kharian is located in Kharian, Khyber Pakhtunkhwa. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Kharian',
   'Khyber Pakhtunkhwa',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5298,8 +5298,8 @@ values (
   'University of Lodhran is located in Lodhran, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Lodhran',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5466,8 +5466,8 @@ values (
   'University of Murree is in Pakistan. A student community for this campus — announcements, questions and everyday campus conversation.',
   null,
   null,
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5490,8 +5490,8 @@ values (
   'University of Muzaffargarh is located in Muzaffargarh, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Muzaffargarh',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5586,8 +5586,8 @@ values (
   'University of Pakpattan is located in Pakpattan, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Pakpattan',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5658,8 +5658,8 @@ values (
   'University of Rahim Yar Khan is located in Rahim Yar Khan, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Rahim Yar Khan',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5682,8 +5682,8 @@ values (
   'University of Rajanpur is located in Rajanpur, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Rajanpur',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5706,8 +5706,8 @@ values (
   'University of Rawalpindi is located in Rawalpindi, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Rawalpindi',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5802,8 +5802,8 @@ values (
   'University of Sheikhupura is located in Sheikhupura, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Sheikhupura',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5946,8 +5946,8 @@ values (
   'University of Taunsa is located in Taunsa, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Taunsa',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -5970,8 +5970,8 @@ values (
   'University of Taxila is located in Taxila, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Taxila',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -6042,8 +6042,8 @@ values (
   'University of Vehari is located in Vehari, Punjab. A student community for this campus — announcements, questions and everyday campus conversation.',
   'Vehari',
   'Punjab',
-  'pending_review'::public.university_status,
-  false,
+  'active'::public.university_status,
+  true,
   false
 )
 on conflict (normalized_name) do update set
@@ -8446,7 +8446,7 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-attock-main-campus', 'Attock', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-attock-main-campus', 'Attock', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-attock'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -8460,7 +8460,7 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-bahawalnagar-main-campus', 'Bahawalnagar', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-bahawalnagar-main-campus', 'Bahawalnagar', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-bahawalnagar'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -8495,7 +8495,7 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-bhakkar-main-campus', 'Bhakkar', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-bhakkar-main-campus', 'Bhakkar', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-bhakkar'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -8719,7 +8719,7 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-hafizabad-main-campus', 'Hafizabad', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-hafizabad-main-campus', 'Hafizabad', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-hafizabad'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -8761,14 +8761,14 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-jhelum-main-campus', 'Jhelum', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-jhelum-main-campus', 'Jhelum', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-jhelum'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-kamalia-main-campus', 'Kamalia', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-kamalia-main-campus', 'Kamalia', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-kamalia'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -8782,21 +8782,21 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-kasur-main-campus', 'Kasur', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-kasur-main-campus', 'Kasur', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-kasur'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-khanewal-main-campus', 'Khanewal', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-khanewal-main-campus', 'Khanewal', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-khanewal'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-kharian-main-campus', 'Kharian', 'Khyber Pakhtunkhwa', true, false
+select u.id, 'Main Campus', 'university-of-kharian-main-campus', 'Kharian', 'Khyber Pakhtunkhwa', true, true
 from public.universities u where u.slug = 'university-of-kharian'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -8845,7 +8845,7 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-lodhran-main-campus', 'Lodhran', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-lodhran-main-campus', 'Lodhran', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-lodhran'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -8915,14 +8915,14 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-murree-main-campus', null, null, true, false
+select u.id, 'Main Campus', 'university-of-murree-main-campus', null, null, true, true
 from public.universities u where u.slug = 'university-of-murree'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-muzaffargarh-main-campus', 'Muzaffargarh', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-muzaffargarh-main-campus', 'Muzaffargarh', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-muzaffargarh'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -8964,7 +8964,7 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-pakpattan-main-campus', 'Pakpattan', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-pakpattan-main-campus', 'Pakpattan', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-pakpattan'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -8999,21 +8999,21 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-rahim-yar-khan-main-campus', 'Rahim Yar Khan', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-rahim-yar-khan-main-campus', 'Rahim Yar Khan', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-rahim-yar-khan'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-rajanpur-main-campus', 'Rajanpur', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-rajanpur-main-campus', 'Rajanpur', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-rajanpur'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-rawalpindi-main-campus', 'Rawalpindi', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-rawalpindi-main-campus', 'Rawalpindi', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-rawalpindi'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -9062,7 +9062,7 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-sheikhupura-main-campus', 'Sheikhupura', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-sheikhupura-main-campus', 'Sheikhupura', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-sheikhupura'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -9125,14 +9125,14 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-taunsa-main-campus', 'Taunsa', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-taunsa-main-campus', 'Taunsa', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-taunsa'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-taxila-main-campus', 'Taxila', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-taxila-main-campus', 'Taxila', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-taxila'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),
@@ -9174,7 +9174,7 @@ on conflict (university_id, lower(name)) do update set
   province = coalesce(excluded.province, public.campuses.province),
   updated_at = now();
 insert into public.campuses (university_id, name, slug, city, province, is_main, is_active)
-select u.id, 'Main Campus', 'university-of-vehari-main-campus', 'Vehari', 'Punjab', true, false
+select u.id, 'Main Campus', 'university-of-vehari-main-campus', 'Vehari', 'Punjab', true, true
 from public.universities u where u.slug = 'university-of-vehari'
 on conflict (university_id, lower(name)) do update set
   city = coalesce(excluded.city, public.campuses.city),

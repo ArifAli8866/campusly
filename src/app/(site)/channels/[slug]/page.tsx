@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import {
   ArrowLeft,
   Building2,
@@ -66,6 +66,13 @@ export default async function ChannelPage({
   const channel = await getChannelOverview(scope, slug);
   if (!channel) {
     notFound();
+  }
+
+  // Canonical redirect if accessed via university slug, campus slug, or abbreviation
+  if (slug.toLowerCase() !== channel.slug.toLowerCase()) {
+    const searchEntries = Object.entries(filterParams).filter(([, v]) => Boolean(v)) as [string, string][];
+    const queryStr = searchEntries.length ? `?${new URLSearchParams(searchEntries).toString()}` : "";
+    redirect(`/channels/${channel.slug}${queryStr}`);
   }
 
   const activeCategory = filterParams.category || undefined;

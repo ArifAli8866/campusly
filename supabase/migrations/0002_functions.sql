@@ -917,6 +917,7 @@ as $$
 declare
   result jsonb;
   uid uuid := auth.uid();
+  cleaned_slug text := btrim(lower(coalesce(p_slug, '')));
 begin
   select jsonb_build_object(
     'id', c.id, 'slug', c.slug, 'name', c.name, 'description', c.description,
@@ -941,9 +942,14 @@ begin
     'is_muted', exists (select 1 from public.channel_mutes m where m.channel_id = c.id and m.user_id = uid),
     'other_campuses', (
       select coalesce(jsonb_agg(jsonb_build_object(
-        'id', c2.id, 'slug', c2.slug, 'campus_name', camp2.name, 'city', camp2.city,
+        'id', c2.id,
+        'slug', c2.slug,
+        'campus_id', camp2.id,
+        'campus_slug', camp2.slug,
+        'campus_name', camp2.name,
+        'city', camp2.city,
         'member_count', (select count(*) from public.channel_members cm2 where cm2.channel_id = c2.id)
-      ) order by camp2.name), '[]'::jsonb)
+      ) order by camp2.is_main desc, camp2.name asc), '[]'::jsonb)
       from public.channels c2
       join public.campuses camp2 on camp2.id = c2.campus_id
       where c2.university_id = c.university_id and c2.id <> c.id and c2.is_active
@@ -952,7 +958,40 @@ begin
   from public.channels c
   join public.universities u on u.id = c.university_id
   join public.campuses camp on camp.id = c.campus_id
-  where c.slug = p_slug and c.is_active and u.is_active
+  where (
+    c.slug = cleaned_slug
+    or camp.slug = cleaned_slug
+    or u.slug = cleaned_slug
+    or lower(coalesce(u.abbreviation, '')) = cleaned_slug
+    or lower(regexp_replace(coalesce(u.abbreviation, ''), '[^a-zA-Z0-9]+', '-', 'g')) = cleaned_slug
+    or lower(regexp_replace(coalesce(u.abbreviation, ''), '[^a-zA-Z0-9]+', '-', 'g') || '-' || lower(regexp_replace(coalesce(camp.city, camp.name), '[^a-zA-Z0-9]+', '-', 'g'))) = cleaned_slug
+    or (
+      coalesce(u.abbreviation, '') <> '' and coalesce(camp.city, '') <> ''
+      and cleaned_slug ilike lower(regexp_replace(u.abbreviation, '[^a-zA-Z0-9]+', '-', 'g')) || '%'
+      and cleaned_slug ilike '%' || lower(regexp_replace(camp.city, '[^a-zA-Z0-9]+', '-', 'g')) || '%'
+    )
+    or exists (
+      select 1 from unnest(u.aliases) a
+      where lower(regexp_replace(a, '[^a-zA-Z0-9]+', '-', 'g')) = cleaned_slug
+         or lower(a) = cleaned_slug
+    )
+    or c.slug ilike '%' || cleaned_slug || '%'
+    or cleaned_slug ilike '%' || c.slug || '%'
+  )
+  and c.is_active and u.is_active
+  order by
+    case
+      when c.slug = cleaned_slug then 1
+      when camp.slug = cleaned_slug then 2
+      when lower(regexp_replace(coalesce(u.abbreviation, ''), '[^a-zA-Z0-9]+', '-', 'g') || '-' || lower(regexp_replace(coalesce(camp.city, camp.name), '[^a-zA-Z0-9]+', '-', 'g'))) = cleaned_slug then 3
+      when u.slug = cleaned_slug and camp.is_main then 4
+      when u.slug = cleaned_slug then 5
+      when lower(coalesce(u.abbreviation, '')) = cleaned_slug and camp.is_main then 6
+      when lower(coalesce(u.abbreviation, '')) = cleaned_slug then 7
+      else 8
+    end,
+    camp.is_main desc,
+    c.name asc
   limit 1;
 
   return result;
@@ -968,8 +1007,9 @@ create or replace function public.university_cards(
   p_city text default null,
   p_type text default null,
   p_sort text default 'name',
-  p_limit integer default 24,
-  p_offset integer default 0
+  p_limit integer default 60,
+  p_offset integer default 0,
+  p_slug text default null
 )
 returns table (
   id uuid, name text, slug text, abbreviation text, description text,
@@ -996,18 +1036,33 @@ as $$
     exists (select 1 from public.channel_members cm join viewer v on true
             where cm.university_id = u.id and cm.user_id = v.uid),
     (select coalesce(jsonb_agg(jsonb_build_object(
-              'id', c.id, 'slug', c.slug, 'name', c.name, 'city', c.city,
-              'member_count', (select count(*) from public.channel_members cm2 where cm2.channel_id = c.id)
-            ) order by c.name), '[]'::jsonb)
-     from public.campuses c where c.university_id = u.id and c.is_active)
+              'id', coalesce(ch.id, c.id),
+              'campus_id', c.id,
+              'slug', coalesce(ch.slug, c.slug),
+              'channel_slug', coalesce(ch.slug, c.slug),
+              'campus_slug', c.slug,
+              'name', c.name,
+              'city', c.city,
+              'member_count', (select count(*) from public.channel_members cm2 where cm2.channel_id = ch.id)
+            ) order by c.is_main desc, c.name asc), '[]'::jsonb)
+     from public.campuses c
+     left join public.channels ch on ch.campus_id = c.id
+     where c.university_id = u.id and c.is_active)
   from public.universities u
   where u.is_active and u.status = 'active'
+    and (p_slug is null or btrim(p_slug) = '' or
+         u.slug = btrim(lower(p_slug)) or
+         lower(coalesce(u.abbreviation, '')) = btrim(lower(p_slug)))
     and (p_query is null or btrim(p_query) = '' or
          u.name ilike '%' || btrim(p_query) || '%' or
+         u.slug = btrim(lower(p_query)) or
+         u.slug ilike '%' || btrim(lower(p_query)) || '%' or
          coalesce(u.abbreviation,'') ilike '%' || btrim(p_query) || '%' or
-         exists (select 1 from unnest(u.aliases) a where a ilike '%' || btrim(p_query) || '%') or
+         lower(coalesce(u.abbreviation,'')) = btrim(lower(p_query)) or
+         exists (select 1 from unnest(u.aliases) a where a ilike '%' || btrim(p_query) || '%' or lower(regexp_replace(a, '[^a-zA-Z0-9]+', '-', 'g')) = btrim(lower(p_query))) or
          coalesce(u.city,'') ilike '%' || btrim(p_query) || '%' or
-         exists (select 1 from public.campuses c2 where c2.university_id = u.id and c2.name ilike '%' || btrim(p_query) || '%'))
+         exists (select 1 from public.campuses c2 where c2.university_id = u.id and (c2.name ilike '%' || btrim(p_query) || '%' or c2.slug = btrim(lower(p_query)))) or
+         exists (select 1 from public.channels ch2 where ch2.university_id = u.id and (ch2.slug = btrim(lower(p_query)) or ch2.name ilike '%' || btrim(p_query) || '%')))
     and (p_province is null or p_province = '' or u.province = p_province)
     and (p_city is null or p_city = '' or u.city = p_city
          or exists (select 1 from public.campuses c3 where c3.university_id = u.id and c3.city = p_city))
@@ -1019,7 +1074,7 @@ as $$
     case when p_sort = 'campuses' then (select count(*) from public.campuses c where c.university_id = u.id and c.is_active) end desc nulls last,
     u.is_featured desc,
     u.name asc
-  limit least(greatest(p_limit, 1), 60)
+  limit least(greatest(p_limit, 1), 600)
   offset greatest(p_offset, 0);
 $$;
 

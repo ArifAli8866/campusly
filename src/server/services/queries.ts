@@ -111,17 +111,20 @@ export async function getTrendingTopics(
 
 /* -------------------------------------------------------------- universities */
 
+export interface UniversityCardsOptions {
+  query?: string | null;
+  province?: string | null;
+  city?: string | null;
+  type?: string | null;
+  sort?: "name" | "most_joined" | "recently_active" | "campuses";
+  limit?: number;
+  offset?: number;
+  slug?: string | null;
+}
+
 export async function getUniversityCards(
   scope: ViewerScope,
-  options: {
-    query?: string | null;
-    province?: string | null;
-    city?: string | null;
-    type?: string | null;
-    sort?: "name" | "most_joined" | "recently_active" | "campuses";
-    limit?: number;
-    offset?: number;
-  } = {},
+  options: UniversityCardsOptions = {},
 ): Promise<UniversityCard[]> {
   return scope.db.rpc<UniversityCard>("university_cards", {
     p_query: options.query ?? null,
@@ -131,12 +134,73 @@ export async function getUniversityCards(
     p_sort: options.sort ?? "name",
     p_limit: options.limit ?? 24,
     p_offset: options.offset ?? 0,
+    p_slug: options.slug ?? null,
   });
 }
 
+/**
+ * Robustly look up a university by slug or abbreviation.
+ * Checks university_cards with slug parameter, query matching, and fallback strategies.
+ */
+export async function getUniversityBySlug(scope: ViewerScope, slug: string): Promise<UniversityCard | null> {
+  const cleaned = slug.trim().toLowerCase();
+  if (!cleaned) return null;
+
+  // 1. Direct RPC lookup by slug
+  const cards = await scope.db
+    .rpc<UniversityCard>("university_cards", {
+      p_slug: cleaned,
+      p_query: cleaned,
+      p_limit: 10,
+    })
+    .catch(() => [] as UniversityCard[]);
+
+  const exact = cards.find(
+    (u) =>
+      u.slug.toLowerCase() === cleaned ||
+      u.abbreviation?.toLowerCase() === cleaned ||
+      u.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === cleaned,
+  );
+  if (exact) return exact;
+  if (cards.length > 0) return cards[0];
+
+  // 2. Fallback query with general query string
+  const fallback = await getUniversityCards(scope, { query: cleaned, limit: 10 });
+  const fallbackMatch = fallback.find(
+    (u) =>
+      u.slug.toLowerCase() === cleaned ||
+      u.abbreviation?.toLowerCase() === cleaned ||
+      u.name.toLowerCase().replace(/[^a-z0-9]+/g, "-") === cleaned,
+  );
+  if (fallbackMatch) return fallbackMatch;
+  if (fallback.length > 0) return fallback[0];
+
+  return null;
+}
+
 export async function getChannelOverview(scope: ViewerScope, slug: string): Promise<ChannelOverview | null> {
-  const rows = await scope.db.rpc<{ channel_overview: ChannelOverview }>("channel_overview", { p_slug: slug });
-  return rows[0]?.channel_overview ?? null;
+  const cleaned = slug.trim();
+  if (!cleaned) return null;
+
+  const rows = await scope.db
+    .rpc<{ channel_overview: ChannelOverview }>("channel_overview", { p_slug: cleaned })
+    .catch(() => [] as { channel_overview: ChannelOverview }[]);
+
+  if (rows[0]?.channel_overview) {
+    return rows[0].channel_overview;
+  }
+
+  // Fallback: If lowercase differs from original, try lowercase
+  if (cleaned.toLowerCase() !== cleaned) {
+    const fallbackRows = await scope.db
+      .rpc<{ channel_overview: ChannelOverview }>("channel_overview", { p_slug: cleaned.toLowerCase() })
+      .catch(() => [] as { channel_overview: ChannelOverview }[]);
+    if (fallbackRows[0]?.channel_overview) {
+      return fallbackRows[0].channel_overview;
+    }
+  }
+
+  return null;
 }
 
 export async function getMyChannels(scope: ViewerScope, limit = 60): Promise<MyChannel[]> {
